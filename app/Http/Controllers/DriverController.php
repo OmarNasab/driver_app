@@ -21,9 +21,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-
-
-        return view("./pages/Driver/index");
+        return view("Pages.Driver.index");
         //
     }
 
@@ -41,7 +39,7 @@ class DriverController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return RedirectResponse
+     * @return Application|Factory|View
      */
     public function store(Request $request)
     {
@@ -69,8 +67,7 @@ class DriverController extends Controller
 
         $driver->save();
 
-        return redirect("driver.index")->with("success");
-
+        return $this->index();
     }
 
     /**

@@ -55,4 +55,14 @@ class ApiController extends Controller
         }
         return [];
     }
+
+    public function finishDestination($id,Request $request){
+
+        echo $request;
+
+    }
+
+    public function finishTrip($id,Request $request){
+        echo $request;
+    }
 }

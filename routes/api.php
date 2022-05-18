@@ -20,6 +20,8 @@ Route::post("signIn", [ApiController::class,"SignInRequest"]);
 Route::post("addExpense", [ApiController::class,"addExpense"]);
 Route::post("totalExpenses", [ApiController::class,"getTotalExpensesForOneDriver"]);
 Route::get("getCurrentMission/{id}",[ApiController::class,'getCurrentMission']);
+Route::post("finishDestination/{id}",[ApiController::class,'finishDestination']);
+Route::post("finishTrip/{id}",[ApiController::class,'finishTrip']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
