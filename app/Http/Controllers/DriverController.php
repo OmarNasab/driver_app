@@ -52,10 +52,6 @@ class DriverController extends Controller
         ]);
 
        $path=$request["image"]->store("images");
-
-
-
-
         $driver=new Driver();
         $driver->full_name=$request->full_name;
         $driver->email=$request->email;
