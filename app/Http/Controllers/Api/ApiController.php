@@ -58,11 +58,11 @@ class ApiController extends Controller
 
     public function finishDestination($id,Request $request){
 
-        echo $request;
+        return $request;
 
     }
 
     public function finishTrip($id,Request $request){
-        echo $request;
+        return $request;
     }
 }

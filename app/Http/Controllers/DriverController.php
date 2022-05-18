@@ -60,9 +60,7 @@ class DriverController extends Controller
         $driver->phone=$request->phone;;
         $driver->uaeID=$request->uaeID;
         $driver->status=0;
-
         $driver->save();
-
         return $this->index();
     }
 
