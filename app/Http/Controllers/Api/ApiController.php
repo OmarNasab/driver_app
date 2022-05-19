@@ -68,7 +68,7 @@ class ApiController extends Controller
         $data=json_decode($request->getContent(),true);
         $oldData=Mission::where("id",$id)->select("direction")->first();
 
-        $newArray=array_push($oldData,$data);
+        $newArray=array_push($oldData->direction,$data);
         Mission::where("id",$id)->update(["direction"=>$newArray]);
     }
 }
