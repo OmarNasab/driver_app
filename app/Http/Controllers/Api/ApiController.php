@@ -57,12 +57,11 @@ class ApiController extends Controller
     }
 
     public function finishDestination($id,Request $request){
-//        $data=json_decode($request->getContent(),true);
-//        $oldData=Mission::where("id",$id)->first();
-//        $Direction=$oldData->direction;
-//        array_push($Direction,$data);
-//        Mission::where("id",$id)->update(["direction"=>$Direction]);
-        return $request;
+        $data=json_decode($request->getContent(),true);
+        $oldData=Mission::where("id",$id)->first();
+        $Direction=$oldData->direction;
+        array_push($Direction,$data);
+        Mission::where("id",$id)->update(["direction"=>$Direction]);
     }
 
     public function finishTrip($id,Request $request){
