@@ -69,7 +69,7 @@ class ApiController extends Controller
         $oldData=Mission::where("id",$id)->first();
         $Direction=$oldData->direction;
         array_push($Direction,$data);
-        Mission::where("id",$id)->update(["direction"=>$Direction,"status"=>1]);
+        Mission::where("id",$id)->update(["direction"=>$Direction,"status"=>1,"completed_date"=>date("Y-m-d H:i:s")]);
         $oldData->driver->update(["status"=>0]);
     }
 }
