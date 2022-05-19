@@ -66,9 +66,10 @@ class ApiController extends Controller
 
     public function finishTrip($id,Request $request){
         $data=json_decode($request->getContent(),true);
-        $oldData=Mission::where("id",$id)->select("direction")->first();
+        $oldData=Mission::where("id",$id)->first();
         $Direction=$oldData->direction;
         array_push($Direction,$data);
-        Mission::where("id",$id)->update(["direction"=>$Direction]);
+        Mission::where("id",$id)->update(["direction"=>$Direction,"status"=>1]);
+        $oldData->driver->update(["status"=>0]);
     }
 }
