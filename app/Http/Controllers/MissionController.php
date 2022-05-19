@@ -49,6 +49,7 @@ class MissionController extends Controller
     public function ajax_store(Request $request){
         $data=json_decode($request->getContent());
 
+
         $driver_id=$data->driver_id;
         $supervisor=$data->supervisor;
         $description=$data->description;
@@ -58,6 +59,7 @@ class MissionController extends Controller
         $mission->driver_id=$driver_id;
         $mission->description=$description;
         $mission["stops"]=$places;
+        $mission["directions"]="[]";
         $mission->status=0;
         $mission->save();
 
