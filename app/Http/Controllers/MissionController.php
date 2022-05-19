@@ -59,7 +59,7 @@ class MissionController extends Controller
         $mission->driver_id=$driver_id;
         $mission->description=$description;
         $mission["stops"]=$places;
-        $mission["directions"]="[]";
+        $mission["direction"]="[]";
         $mission->status=0;
         $mission->save();
 
