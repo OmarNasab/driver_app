@@ -65,7 +65,7 @@ class MissionController extends Controller
         Driver::where("id",$driver_id)->update(["status"=>"1"]);
 
 
-        $url = 'https://fcm.googleapis.com/fcm/send';
+        $url = 'https://fcm.googleapis.com/v1/projects/driver-app-6f2e6//messages:send';
         $FcmToken = Driver::where("id",$driver_id)->first();
 
         $serverKey = 'AAAAJM_uXdI:APA91bEde-JBG2qvEHAFwDmZFUNnkqNzGdGMUvh6CcC7FohE4xrT-JAxL759IR1Ww2x6fSz-3mzRR7M0QjkEuk0-cury7V4oVnMzchM_RFT6l8d2tgoPDtdEiP8TP6Gxn0VQfjLpr9iL';
@@ -103,7 +103,7 @@ class MissionController extends Controller
         // Close connection
         curl_close($ch);
         // FCM response
-        dd($result);
+
     }
 
     /**
