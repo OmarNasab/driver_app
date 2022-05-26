@@ -71,7 +71,7 @@ class MissionController extends Controller
         $serverKey = 'AAAAJM_uXdI:APA91bEde-JBG2qvEHAFwDmZFUNnkqNzGdGMUvh6CcC7FohE4xrT-JAxL759IR1Ww2x6fSz-3mzRR7M0QjkEuk0-cury7V4oVnMzchM_RFT6l8d2tgoPDtdEiP8TP6Gxn0VQfjLpr9iL';
 
         $data = [
-            "registration_ids" => $FcmToken,
+            "to" => $FcmToken->device_id,
             "notification" => [
                 "title" => "New Mission",
                 "body" => "You have a new Mission",
