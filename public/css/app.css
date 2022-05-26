@@ -999,11 +999,11 @@ input:checked + .toggle-bg {
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
-.row-span-4 {
-  grid-row: span 4 / span 4;
-}
 .row-span-1 {
   grid-row: span 1 / span 1;
+}
+.row-span-4 {
+  grid-row: span 4 / span 4;
 }
 .row-span-3 {
   grid-row: span 3 / span 3;
@@ -1066,11 +1066,11 @@ input:checked + .toggle-bg {
 .-mt-px {
   margin-top: -1px;
 }
-.-mr-2 {
-  margin-right: -0.5rem;
-}
 .-mb-px {
   margin-bottom: -1px;
+}
+.-mr-2 {
+  margin-right: -0.5rem;
 }
 .mb-1 {
   margin-bottom: 0.25rem;
@@ -1131,6 +1131,9 @@ input:checked + .toggle-bg {
 }
 .h-20 {
   height: 5rem;
+}
+.h-2 {
+  height: 0.5rem;
 }
 .h-9 {
   height: 2.25rem;
@@ -1236,11 +1239,11 @@ input:checked + .toggle-bg {
 .cursor-default {
   cursor: default;
 }
-.cursor-not-allowed {
-  cursor: not-allowed;
-}
 .cursor-pointer {
   cursor: pointer;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
 }
 .resize {
   resize: both;
@@ -1265,6 +1268,9 @@ input:checked + .toggle-bg {
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -1276,6 +1282,9 @@ input:checked + .toggle-bg {
 }
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+.grid-rows-3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 .grid-rows-5 {
   grid-template-rows: repeat(5, minmax(0, 1fr));
@@ -1526,6 +1535,9 @@ input:checked + .toggle-bg {
 }
 .p-3 {
   padding: 0.75rem;
+}
+.p-0 {
+  padding: 0px;
 }
 .px-4 {
   padding-left: 1rem;
@@ -9702,13 +9714,13 @@ readers do not read off random characters that represent icons */
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-.hover\:text-gray-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.hover\:text-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
@@ -9776,6 +9788,11 @@ readers do not read off random characters that represent icons */
 .focus\:text-gray-500:focus {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+.focus\:shadow-none:focus {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .focus\:outline-none:focus {
   outline: 2px solid transparent;

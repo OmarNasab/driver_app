@@ -49,7 +49,6 @@ class MissionController extends Controller
     public function ajax_store(Request $request){
         $data=json_decode($request->getContent());
 
-
         $driver_id=$data->driver_id;
         $supervisor=$data->supervisor;
         $description=$data->description;
@@ -64,17 +63,59 @@ class MissionController extends Controller
         $mission->save();
 
         Driver::where("id",$driver_id)->update(["status"=>"1"]);
+
+
+        $url = 'https://fcm.googleapis.com/fcm/send';
+        $FcmToken = Driver::where("id",$driver_id)->first();
+
+        $serverKey = 'AAAAJM_uXdI:APA91bEde-JBG2qvEHAFwDmZFUNnkqNzGdGMUvh6CcC7FohE4xrT-JAxL759IR1Ww2x6fSz-3mzRR7M0QjkEuk0-cury7V4oVnMzchM_RFT6l8d2tgoPDtdEiP8TP6Gxn0VQfjLpr9iL';
+
+        $data = [
+            "registration_ids" => $FcmToken,
+            "notification" => [
+                "title" => "New Mission",
+                "body" => "You have a new Mission",
+            ]
+        ];
+        $encodedData = json_encode($data);
+
+        $headers = [
+            'Authorization:key=' . $serverKey,
+            'Content-Type: application/json',
+        ];
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        // Disabling SSL Certificate support temporarly
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
+        // Execute post
+        $result = curl_exec($ch);
+        if ($result === FALSE) {
+            die('Curl failed: ' . curl_error($ch));
+        }
+        // Close connection
+        curl_close($ch);
+        // FCM response
+        dd($result);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $mission=Mission::where("id",$id)->first();
+        return view("Pages.Mission.show",["mission"=>$mission]);
     }
 
     /**

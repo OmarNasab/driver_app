@@ -19,6 +19,7 @@ class Driver extends Model
         'password',
         "image",
         "uaeID",
+        "device_id",
         "status"
     ];
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("phone");
             $table->string("image");
             $table->string("uaeID");
+            $table->string("device_id")->nullable();
             $table->string("status");
             $table->timestamps();
         });
