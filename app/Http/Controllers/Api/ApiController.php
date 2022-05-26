@@ -16,7 +16,7 @@ class ApiController extends Controller
         $data=json_decode($request->getContent());
         $email=$data->email;
         $password=$data->password;
-        $token=$data["token"];
+        $token=$data->token;
         $result=Driver::where("email",$email)->first();
         if($result){
             if(Hash::check($password,$result->password)){
