@@ -103,6 +103,7 @@ class MissionController extends Controller
         // Close connection
         curl_close($ch);
         // FCM response
+        dd($ch);
 
     }
 
