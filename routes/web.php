@@ -4,6 +4,7 @@ use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::resource("driver", DriverController::class);
 Route::resource("map", MapController::class);
 Route::resource("expense", ExpenseController::class);
 Route::resource("mission", MissionController::class);
+Route::resource("role", RoleController::class);
 Route::get("expense/{id}/download",[ExpenseController::class,"downloadImage"])->name("downloadImage");
 Route::get("expense/{id}/verify/{status}",[ExpenseController::class,"verify"])->name("expenseVerify");
 Route::post("mission/ajax_store",[MissionController::class,"ajax_store"]);
