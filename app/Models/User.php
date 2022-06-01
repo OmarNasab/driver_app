@@ -40,6 +40,15 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function hasRole($role): bool
+    {
+        $roles=$this->role()->permissions;
+        if(in_array($role,$roles)){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * The attributes that should be cast.
      *
