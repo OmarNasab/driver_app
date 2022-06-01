@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function hasRole($role): bool
     {
-        $roles=$this->role->permissions;
+        $roles=json_decode($this->role->permissions,true);
         if(in_array($role,$roles)){
             return true;
         }
