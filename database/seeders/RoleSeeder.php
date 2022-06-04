@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
     {
         $role=new Role();
         $role->name="admin";
-        $role->permissions=json_encode([
+        $role->permissions=[
             "user"=>[
                 "add",
                 "edit",
@@ -44,7 +44,7 @@ class RoleSeeder extends Seeder
                 "delete",
                 "show",
             ]
-        ]);
+        ];
         $role->save();
     }
 }
