@@ -26,4 +26,10 @@ class Role extends Model
         return $this->hasMany(User::class);
     }
 
+    public function getRoleName($key): string
+    {
+        $withOuUnderscore=str_replace("_"," ",$key);
+        return ucwords($withOuUnderscore);
+    }
+
 }

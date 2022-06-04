@@ -6,7 +6,7 @@
     <div class="container mx-auto mt-1 bg-white shadow ">
         <div class="text-2xl py-4 border-b-2 border-blue-500">
             <div class="ml-4">
-                Mission Details
+                Roles List
             </div>
         </div>
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
@@ -16,6 +16,9 @@
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Roles
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
@@ -30,8 +33,13 @@
                                 {{$role->name}}
                             </th>
                             <td class="px-6 py-4 text-right">
+                               @foreach($role->permission as $permission)
+                                   {{$role->getRoleName($permission)}}
+                                @endforeach
+                            </td>
+                            <td class="px-6 py-4 text-right">
                                 <a href="{{route("role.edit",[$role->id])}}"
-                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                         </tr>
                     @endforeach

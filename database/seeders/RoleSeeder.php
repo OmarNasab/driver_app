@@ -28,7 +28,7 @@ class RoleSeeder extends Seeder
                 "delete_drivers",
                 "show_drivers",
                 "show_expenses",
-                "approve_expenses",
+                "verify_expenses",
                 "add_mission",
                 "show_mission",
                 "add_roles",
