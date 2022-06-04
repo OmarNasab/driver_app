@@ -19,7 +19,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles=Role::all();
-        return view("Pages.Roles.index",["roles"=>$roles]);
+        return view("Pages.Role.index",["roles"=>$roles]);
     }
 
     /**
