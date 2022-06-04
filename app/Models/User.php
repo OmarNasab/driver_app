@@ -44,6 +44,8 @@ class User extends Authenticatable
     {
         $removeUnderScore=str_replace("_"," " ,$role);
         $capability=explode(" ",trim($removeUnderScore));
+        if(!array_key_exists($capability[1],$this->role->permissions))
+            return false;
         $role=$this->role->permissions[$capability[1]];
         if(in_array($capability[0],$role)){
             return true;
