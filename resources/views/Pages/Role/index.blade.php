@@ -34,10 +34,7 @@
                             </th>
                             <td class="px-6 py-4 text-right">
                                 @foreach(json_decode($role->permissions,true) as $permission)
-                                    {{$role->getRoleName($permission)}}
-
-
-
+                                    {{$role->getRoleName($permission)}}/
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 text-right">
