@@ -22,27 +22,27 @@ class RoleSeeder extends Seeder
                 "add",
                 "edit",
                 "delete",
-                "show",
+                "show"
             ],
             "driver"=>[
                 "add",
                 "edit",
                 "delete",
-                "show",
+                "show"
             ],
             "expense"=>[
                 "verify",
-                "show",
+                "show"
             ],
             "mission"=>[
                 "add",
-                "show",
+                "show"
             ],
             "role"=>[
                 "add",
                 "edit",
                 "delete",
-                "show",
+                "show"
             ]
         ]);
         $role->save();
