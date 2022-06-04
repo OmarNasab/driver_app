@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot nmae="header">
+    <x-slot name="header">
 
     </x-slot>
 
