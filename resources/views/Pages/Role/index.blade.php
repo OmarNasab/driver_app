@@ -34,7 +34,9 @@
                             </th>
                             <td class="px-6 py-4 text-right">
                                @foreach($role->permission as $permissions)
-                                   {{implode(".",$permissions)}}
+                                   @foreach($permissions as $permission)
+                                       {{$permission}}
+                                    @endforeach
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 text-right">
