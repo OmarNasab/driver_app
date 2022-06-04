@@ -18,7 +18,7 @@ class RoleSeeder extends Seeder
     {
         DB::table("roles")->insert([
             "name"=>"admin",
-            "permissions"=> json_encode([
+            "permissions"=> ["role"=>[
                 "add_users",
                 "edit_users",
                 "delete_users",
@@ -35,7 +35,7 @@ class RoleSeeder extends Seeder
                 "edit_roles",
                 "delete_roles",
                 "show_roles",
-            ])
+            ]]
         ]);
 
     }
