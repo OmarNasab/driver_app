@@ -13,11 +13,11 @@ class Role extends Model
     protected $table = 'roles';
     protected $fillable = [
         'name',
-        'permission',
+        'permissions',
     ];
 
     protected $casts=[
-        "permission"=>array(),
+        "permissions"=>array(),
     ];
 
 

@@ -33,7 +33,11 @@
                                 {{$role->name}}
                             </th>
                             <td class="px-6 py-4 text-right">
-                               
+                               @foreach($role->permissions as $permission)
+                                  
+                                       {{$permission}}
+
+                                @endforeach
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("role.edit",[$role->id])}}"
