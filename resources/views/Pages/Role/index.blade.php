@@ -32,9 +32,13 @@
                                 class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{$role->name}}
                             </th>
+                            <td class="px-6 py-4 text-right">
+                                @foreach(json_decode($role->permissions,true) as $permission)
 
 
 
+                                @endforeach
+                            </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("role.edit",[$role->id])}}"
                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -46,7 +50,5 @@
             </div>
         </div>
     </div>
-    @for($i=0;$i<count($role->permissions);$i++)
-        {{$role->permissions[$i]}}
-    @endfor
+
 </x-app-layout>
