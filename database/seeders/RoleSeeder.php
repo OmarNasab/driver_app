@@ -32,9 +32,10 @@ class RoleSeeder extends Seeder
             "show_mission",
             "add_mission",
             ];
+        $jsonPermissions=json_encode($permissions);
         $role=new Role();
         $role->name="admin";
-        $role->permissions=$permissions;
+        $role->permissions=$jsonPermissions;
         $role->save();
 
     }
