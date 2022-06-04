@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function hasRole($role): bool
     {
-        $removeUnderScore=str_replace("-"," " ,$role);
+        $removeUnderScore=str_replace("_"," " ,$role);
         $capability=explode(" ",trim($removeUnderScore));
         $role=$this->role->permissions[$capability[1]];
         if(in_array($capability[0],$role)){
