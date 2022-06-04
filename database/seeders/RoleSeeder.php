@@ -15,32 +15,23 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $permissions=json_encode(["user"=>[
-            "add",
-            "edit",
-            "delete",
-            "show"
-        ],
-            "driver"=>[
-                "add",
-                "edit",
-                "delete",
-                "show"
-            ],
-            "expense"=>[
-                "verify",
-                "show"
-            ],
-            "mission"=>[
-                "add",
-                "show"
-            ],
-            "role"=>[
-                "add",
-                "edit",
-                "delete",
-                "show"
-            ]]);
+        $permissions=[
+            "add_user",
+            "edit_user",
+            "delete_user",
+            "show_user",
+            "add_role",
+            "edit_role",
+            "delete_role",
+            "show_role",
+            "add_driver",
+            "edit_driver",
+            "delete_driver",
+            "show_expense",
+            "verify_expense",
+            "show_mission",
+            "add_mission",
+            ];
         $role=new Role();
         $role->name="admin";
         $role->permissions=$permissions;
