@@ -43,7 +43,7 @@ class RoleSeeder extends Seeder
             ]];
         $role=new Role();
         $role->name="admin";
-        $role->permissions=json_encode($permissions);
+        $role->permissions=$permissions;
         $role->save();
     }
 }
