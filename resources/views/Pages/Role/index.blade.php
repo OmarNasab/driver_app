@@ -33,7 +33,7 @@
                                 {{$role->name}}
                             </th>
                             <td class="px-6 py-4 text-right">
-                                {{$role->permissions[0][1]}}
+                                {{$role->permissions[0]}}
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("role.edit",[$role->id])}}"
