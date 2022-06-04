@@ -17,24 +17,26 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table("roles")->insert([
-            "name"=>"admin",
-            "permissions"=> [
-                "add_users",
-                "edit_users",
-                "delete_users",
-                "show_users",
-                "add_drivers",
-                "edit_drivers",
-                "delete_drivers",
-                "show_drivers",
-                "show_expenses",
-                "verify_expenses",
-                "add_mission",
-                "show_mission",
-                "add_roles",
-                "edit_roles",
-                "delete_roles",
-                "show_roles",
+            "name" => "admin",
+            "permissions" => [
+                "permissions" => [
+                    "add_users",
+                    "edit_users",
+                    "delete_users",
+                    "show_users",
+                    "add_drivers",
+                    "edit_drivers",
+                    "delete_drivers",
+                    "show_drivers",
+                    "show_expenses",
+                    "verify_expenses",
+                    "add_mission",
+                    "show_mission",
+                    "add_roles",
+                    "edit_roles",
+                    "delete_roles",
+                    "show_roles",
+                ]
             ]
         ]);
 
