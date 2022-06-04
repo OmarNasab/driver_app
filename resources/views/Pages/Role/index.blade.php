@@ -18,7 +18,7 @@
                             Name
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Roles
+                            Permissions
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
