@@ -16,7 +16,7 @@
                     <x-label for="role_name" :value="__('Role Name')"></x-label>
                     <x-input id="role_name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus></x-input>
                 </div>
-                @foreach($permissions as $permission)
+                @foreach($permissions->getCurrentPermissions() as $permission)
                 <div class="w-1/4">
                     {{$permission}}
                 </div>
