@@ -75,7 +75,10 @@ class Role extends Model
             }
         }
         return $permissions;
-
+    }
+    public function getCurrentPermissions(): array
+    {
+        return self::capabilities;
     }
 
 }
