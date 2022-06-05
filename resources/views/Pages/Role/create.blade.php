@@ -18,8 +18,11 @@
                 </div>
                 <div class="grid grid-cols-4">
                 @foreach($permissions->getCurrentPermissions() as $permission)
-                <div>
-                    <input type="checkbox" name="permissions[]" value="{{$permission}}">{{$permissions->getRoleName($permission)}}
+                <div class="row-span-1">
+                    <label>
+                        <input type="checkbox" name="permissions[]" value="{{$permission}}">
+                        {{$permissions->getRoleName($permission)}}
+                    </label>
                 </div>
                 @endforeach
                 </div>
