@@ -57,8 +57,8 @@ class Role extends Model
         $roles=[];
         $capabilities=[];
         for($i=0;$i<count($permission);$i++){
-            $loweredCase=strtolower($permission[$i]);
-            $role=explode(" ",trim($loweredCase));
+            $loweredCase=strtolower($this->getRoleName($permission[$i]));
+            $role=explode(" ",trim($loweredCase))[1];
             $capability=explode(" ",trim($loweredCase))[0];
             if(!in_array($role,$roles)){
                 array_push($roles,$role);
