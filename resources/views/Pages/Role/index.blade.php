@@ -41,6 +41,6 @@
         </div>
     </div>
 <script>
-    console.log({{$test}})
+    console.log({{$test[0][0]}})
 </script>
 </x-app-layout>
