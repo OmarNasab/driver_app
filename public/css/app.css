@@ -9950,6 +9950,9 @@ readers do not read off random characters that represent icons */
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
+.dark .dark\:ring-offset-gray-800 {
+  --tw-ring-offset-color: #1F2937;
+}
 .dark .odd\:dark\:bg-gray-800:nth-child(odd) {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -10017,6 +10020,10 @@ readers do not read off random characters that represent icons */
 .dark .dark\:focus\:ring-red-900:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(119 29 29 / var(--tw-ring-opacity));
+}
+.dark .dark\:focus\:ring-blue-600:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(28 100 242 / var(--tw-ring-opacity));
 }
 .dark .group:hover .dark\:group-hover\:text-white {
   --tw-text-opacity: 1;
