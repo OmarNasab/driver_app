@@ -1198,6 +1198,9 @@ input:checked + .toggle-bg {
 .shrink-0 {
   flex-shrink: 0;
 }
+.basis-1\/4 {
+  flex-basis: 25%;
+}
 .origin-top-left {
   transform-origin: top left;
 }
@@ -1258,10 +1261,6 @@ input:checked + .toggle-bg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-}
-.columns-4 {
-  -moz-columns: 4;
-       columns: 4;
 }
 .grid-flow-col {
   grid-auto-flow: column;
