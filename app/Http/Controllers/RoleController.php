@@ -16,9 +16,30 @@ class RoleController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(): View|Factory|Application
     {
+        $permission=[
+            "add_user",
+            "edit_user",
+            "delete_user",
+            "show_user",
+            "add_role",
+            "edit_role",
+            "delete_role",
+            "show_role",
+            "add_driver",
+            "edit_driver",
+            "delete_driver",
+            "show_driver",
+            "add_mission",
+            "show_mission",
+            "show_expense",
+            "verify_expense"
+        ];
+
         $roles=Role::all();
+        $role=new Role();
+        $new=$role->setPermissions($permission);
         return view("Pages.Role.index",["roles"=>$roles]);
     }
 
@@ -57,10 +78,10 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
