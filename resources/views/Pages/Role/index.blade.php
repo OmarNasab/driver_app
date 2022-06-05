@@ -40,5 +40,7 @@
             </div>
         </div>
     </div>
-
+<script>
+    console.log({{$test}})
+</script>
 </x-app-layout>

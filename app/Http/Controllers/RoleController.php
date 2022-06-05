@@ -40,7 +40,7 @@ class RoleController extends Controller
         $roles=Role::all();
         $role=new Role();
         $new=$role->setPermissions($permission);
-        return view("Pages.Role.index",["roles"=>$roles]);
+        return view("Pages.Role.index",["roles"=>$roles,"test"=>$new]);
     }
 
     /**
