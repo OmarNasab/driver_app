@@ -67,6 +67,9 @@ class Role extends Model
             array_push($capabilities[count($capabilities)-1],$capability);
         }
         for ($i=0;$i<count($roles);$i++){
+            $permissions[$roles[$i]]=[];
+        }
+        for ($i=0;$i<count($capabilities);$i++){
             for($j=0;$j<count($capabilities[$i]);$j++){
                 array_push($permissions[$roles[$i]],$capabilities[$i][$j]);
             }
