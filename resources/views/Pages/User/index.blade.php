@@ -31,13 +31,12 @@
                                 class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{$user->name}}
                             </th>
-                            <td class="px-6 py-4 text-right">
+                            <td class="px-6 py-4">
                                {{$user->email}}
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("role.show",[$user->id])}}"
                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                            </td>
                                 <a href="{{route("role.edit",[$user->id])}}"
                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
