@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -28,7 +29,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("Pages.User.create");
+        $roles=Role::all();
+        return view("Pages.User.create",["roles"=>$roles]);
     }
 
     /**
