@@ -5,7 +5,7 @@
     <div class="container mx-auto mt-1 bg-white shadow ">
         <div class="text-2xl py-4 border-b-2 border-blue-500">
             <div class="ml-4">
-                Roles List
+                Users List
             </div>
         </div>
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
@@ -18,6 +18,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Email
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Role
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
@@ -34,10 +37,13 @@
                             <td class="px-6 py-4">
                                {{$user->email}}
                             </td>
+                            <td class="px-6 py-4">
+                                {{$user->role->name}}
+                            </td>
                             <td class="px-6 py-4 text-right">
-                                <a href="{{route("role.show",[$user->id])}}"
+                                <a href="{{route("user.show",[$user->id])}}"
                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                                <a href="{{route("role.edit",[$user->id])}}"
+                                <a href="{{route("user.edit",[$user->id])}}"
                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                         </tr>
