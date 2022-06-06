@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $user=User::all();
-        return view("Pages.User.index",["users",$user]);
+        return view("Pages.User.index",["users"=>$user]);
     }
 
     /**
