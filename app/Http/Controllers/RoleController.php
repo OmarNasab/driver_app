@@ -49,7 +49,8 @@ class RoleController extends Controller
         $role=new Role();
         $role->name=$request->name;
         $role->permissions=$role->setPermissions($request->permissions);
-        return redirect("role.index");
+        $role->save();
+        return $this->index();
     }
 
     /**
