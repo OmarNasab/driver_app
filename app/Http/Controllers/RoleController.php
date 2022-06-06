@@ -6,8 +6,10 @@ use App\Models\Role;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class RoleController extends Controller
 {
@@ -37,11 +39,17 @@ class RoleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return void
+     * @return Application|RedirectResponse|Redirector
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>["required","string"],
+        ]);
+        $role=new Role();
+        $role->name=$request->name;
+        $role->permissions=$role->setPermissions($request->permissions);
+        return redirect("role.index");
     }
 
     /**
