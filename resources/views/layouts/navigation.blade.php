@@ -16,7 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('driver.index')" :active="request()->routeIs('driver.index')">
-                        {{ __('Driver') }}
+                        {{ __('Drivers') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('mission.index')" :active="request()->routeIs('mission.index')">
+                        {{ __('Missions) }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('expense.index')" :active="request()->routeIs('expense.index')">
+                        {{ __('Expenses') }}
                     </x-nav-link>
                 </div>
             </div>
