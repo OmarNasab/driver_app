@@ -17,6 +17,7 @@ class Driver extends Model
         'full_name',
         'email',
         'password',
+        "phone",
         "image",
         "uaeID",
         "device_id",

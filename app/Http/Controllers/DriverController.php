@@ -21,7 +21,8 @@ class DriverController extends Controller
      */
     public function index()
     {
-        return view("Pages.Driver.index");
+        $drivers=Driver::all();
+        return view("Pages.Driver.index",["drivers"=>$drivers]);
         //
     }
 
