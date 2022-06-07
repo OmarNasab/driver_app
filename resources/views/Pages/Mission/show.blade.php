@@ -8,6 +8,7 @@ $directions=[];
     @endforeach
 @endforeach
 
+
 <x-app-layout>
     <x-slot name="header">
 
@@ -22,6 +23,7 @@ $directions=[];
                             aria-selected="false">Details
                     </button>
                 </li>
+                @if(count($mission->direction)!=0)
                 <li class="mr-2" role="presentation">
                     <button
                         class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
@@ -29,6 +31,7 @@ $directions=[];
                         aria-controls="direction" aria-selected="false">Directions
                     </button>
                 </li>
+                @endif
             </ul>
         </div>
 
@@ -77,6 +80,7 @@ $directions=[];
                             </div>
                         </div>
                     </div>
+                    @if(count($mission->direction)!=0)
                     <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="direction" role="tabpanel"
                          aria-labelledby="direction-tab">
                         <div id="map" style="height: 500px">
@@ -84,10 +88,12 @@ $directions=[];
                         <label for="default-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default range</label>
                         <input id="default-range" type="range" value="1" min="1" max="{{count($directions)}}" onchange="changeMarker()" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+    @if(count($mission->direction)!=0)
     <script>
         var map;
         var markersArray = [];
@@ -144,4 +150,5 @@ $directions=[];
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAMFxLg6Qi_iib6bKjJIxyEmOPvUr7m_Y&callback=initMap&v=weekly"
         async
     ></script>
+    @endif
 </x-app-layout>
