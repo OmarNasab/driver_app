@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex flex-row w-full justify-between">
+        <div class="flex flex-row w-full justify-end">
             <div>
                 <x-link link="driver.create">Add Driver</x-link>
             </div>
