@@ -1,12 +1,12 @@
 <?php
 $directions=[];
-
 ?>
 @foreach($mission->direction as $stop)
     @foreach($stop["direction"] as $direction)
-       {{array_push($directions,[$direction["lat"],$direction["long"]])}}
+        @php(array_push($directions,[$direction["lat"],$direction["long"]]))
     @endforeach
 @endforeach
+
 
 
 <x-app-layout>
