@@ -16,13 +16,13 @@ class ExpenseController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
 
         $in_progress=Expense::where("status",Expense::NOT_VERIFIED)->get();
         $valid=Expense::where("status",Expense::VALID)->get();
         $invalid=Expense::where("status",Expense::INVALID)->get();
-        return view("./Pages/Expense/index",["in_progress"=>$in_progress,"valid"=>$valid,"invalid"=>$invalid]);
+        return view("Pages.Expense.index",["in_progress"=>$in_progress,"valid"=>$valid,"invalid"=>$invalid]);
     }
 
     /**
