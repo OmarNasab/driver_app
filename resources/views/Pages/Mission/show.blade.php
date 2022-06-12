@@ -86,7 +86,7 @@ $directions=[];
                         <div id="map" style="height: 500px">
                         </div>
                         <label for="default-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default range</label>
-                        <input id="default-range" type="range" value="1" min="1" max="{{count($directions)}}" onchange="changeMarker()" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                        <input id="default-range" type="range" value="1" min="1" max="{{count($mission->direction[0]["direction"])}}" onchange="changeMarker()" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -186,6 +186,7 @@ $directions=[];
             for(let i=0;i<polyLinesArray.length;i++){
                 polyLinesArray[i].setMap(null)
             }
+            document.getElementById("default-range").setAttribute("max",polyLinesArray[index].length)
             polyLinesArray[index].setMap(map)
         }
     </script>
