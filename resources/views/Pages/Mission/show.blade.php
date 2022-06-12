@@ -110,7 +110,7 @@ $directions=[];
                                     <td class="px-6 py-4">
                                     </td>
                                     <td class="px-6 py-4 text-right">
-                                        <button onclick="changePolyLine()" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</button>
+                                        <button onclick="changePolyLine({{$index}})" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -161,14 +161,6 @@ $directions=[];
             });
             polyLinesArray.push(flightPath)
             @endforeach
-
-            // const flightPath = new google.maps.Polyline({
-            //     path: flightPlanCoordinates,
-            //     geodesic: true,
-            //     strokeColor: "#FF0000",
-            //     strokeOpacity: 1.0,
-            //     strokeWeight: 2,
-            // });
             polyLinesArray[0].setMap(map);
         }
 
