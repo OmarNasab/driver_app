@@ -126,7 +126,8 @@ $directions=[];
     <script>
         var map;
         var markersArray = [];
-        var polyLinesArray=[]
+        var polyLinesArray=[];
+        var paths=[];
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
@@ -136,32 +137,24 @@ $directions=[];
                     mapTypeId: "terrain",
                 }
             });
-            const flightPlanCoordinates = [
-                    @foreach($directions as $direction)
-
-                {
-                    lat: {{$direction[0]}}, lng: {{$direction[1]}}
-                },
-                @endforeach
-            ];
             addMarker({{$directions[0][0]}},{{$directions[0][1]}})
             let flightPath;
             @foreach($mission->direction as $stop)
-
-             flightPath = new google.maps.Polyline({
-                path:[  @foreach($stop["direction"] as $direction)
+                var path=[  @foreach($stop["direction"] as $direction)
                     {
+                        lat: {{$direction["lat"]}},lng: {{$direction["long"]}}
 
-                    lat: {{$direction["lat"]}},lng: {{$direction["long"]}}
-
-                },
+                    },
                 @endforeach
-                    ],
+                ]
+             flightPath = new google.maps.Polyline({
+                path:path,
                 geodesic: true,
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
+                paths.push(path)
             polyLinesArray.push(flightPath)
             @endforeach
             polyLinesArray[0].setMap(map);
@@ -186,7 +179,7 @@ $directions=[];
             for(let i=0;i<polyLinesArray.length;i++){
                 polyLinesArray[i].setMap(null)
             }
-            document.getElementById("default-range").setAttribute("max",polyLinesArray[index].length)
+            document.getElementById("default-range").setAttribute("max",paths[index].length)
             polyLinesArray[index].setMap(map)
         }
     </script>
