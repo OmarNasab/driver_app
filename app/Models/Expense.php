@@ -23,6 +23,7 @@ class Expense extends Model
 
     protected $fillable = [
         'driver_id',
+        'user_id',
         'category',
         'amount',
         "description",
@@ -37,6 +38,10 @@ class Expense extends Model
     public function driver(): BelongsTo
     {
         return $this->belongsTo(Driver::class);
+    }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

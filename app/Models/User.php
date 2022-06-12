@@ -39,6 +39,11 @@ class User extends Authenticatable
         return $this->hasMany(Mission::class);
     }
 
+    public function expenses(): HasMany
+    {
+        return $this->hasMany(Expense::class);
+    }
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);

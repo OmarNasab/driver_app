@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('driver_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string("category");
             $table->string("description");
             $table->double("amount");

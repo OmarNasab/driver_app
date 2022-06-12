@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use Auth;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ExpenseController extends Controller
 {
@@ -99,7 +99,7 @@ class ExpenseController extends Controller
         return response()->download(storage_path("app/public/".$expense->attachment));
     }
     public function verify($id,$status){
-        Expense::where("id",$id)->update(["status"=>$status]);
+        Expense::where("id",$id)->update(["status"=>$status,"user_id",Auth::id()]);
 
         return redirect()->back();
     }

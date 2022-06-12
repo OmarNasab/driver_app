@@ -50,6 +50,9 @@
                     @endif
                 </div>
                 <div class="row-span-1"><span class="font-bold">Date:</span> {{$expense->created_at}}</div>
+                @if($expense->status!=0)
+                <div class="row-span-1"><span class="font-bold">Verified By</span> {{$expense->user->name}}</div>
+                @endif
             </div>
 
         </div>
