@@ -171,6 +171,9 @@ $directions=[];
             let value=document.getElementById("default-range").value;
             addMarker(directions[value-1][0],directions[value-1][1])
         }
+        function changePolyline(){
+            google.maps.Polyline.setMap(null)
+        }
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
