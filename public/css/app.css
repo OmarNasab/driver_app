@@ -1008,9 +1008,6 @@ input:checked + .toggle-bg {
 .row-span-3 {
   grid-row: span 3 / span 3;
 }
-.row-span-5 {
-  grid-row: span 5 / span 5;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1291,6 +1288,9 @@ input:checked + .toggle-bg {
 }
 .grid-rows-5 {
   grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
