@@ -13,7 +13,7 @@
                 </div>
                 <div class="row-span-1"><span class="font-bold">Driver Name:</span> {{$driver->full_name}}</div>
                 <div class="row-span-1"><span class="font-bold">Email:</span> {{$driver->email}}</div>
-                <div class="row-span-2"><span class="font-bold">Phone Number:</span> {{$driver->phone}}</div>
+                <div class="row-span-1"><span class="font-bold">Phone Number:</span> {{$driver->phone}}</div>
                 <div class="row-span-1"><span class="font-bold">UAE ID:</span> {{$driver->uaeID}}</div>
                 <div class="row-span-1"><span class="font-bold">Status:</span>
                     @if($driver->status==0)
