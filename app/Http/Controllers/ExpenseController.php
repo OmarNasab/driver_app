@@ -54,7 +54,7 @@ class ExpenseController extends Controller
      */
     public function show(int $id)
     {
-        $expense=Expense::where("id",1)->first();
+        $expense=Expense::where("id",$id)->first();
         return view("./Pages/Expense/show",["expense"=>$expense]);
     }
 

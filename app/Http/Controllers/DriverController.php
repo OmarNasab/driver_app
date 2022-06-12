@@ -68,12 +68,13 @@ class DriverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(int $id): View|Factory|Application
     {
-        //
+        $driver=Driver::where("id",$id)->first();
+        return view("./Pages/Driver/show",["driver"=>$driver]);
     }
 
     /**
