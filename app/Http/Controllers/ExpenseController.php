@@ -99,7 +99,7 @@ class ExpenseController extends Controller
         return response()->download(storage_path("app/public/".$expense->attachment));
     }
     public function verify($id,$status){
-        Expense::where("id",$id)->update(["status"=>$status,"user_id",Auth::id()]);
+        Expense::where("id",$id)->update(["status"=>$status,"user_id"=>Auth::id()]);
 
         return redirect()->back();
     }
