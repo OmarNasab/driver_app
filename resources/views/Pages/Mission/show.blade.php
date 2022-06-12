@@ -110,7 +110,7 @@ $directions=[];
                                     <td class="px-6 py-4">
                                     </td>
                                     <td class="px-6 py-4 text-right">
-                                        <button onclick="changePolyline()" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</button>
+                                        <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -126,6 +126,7 @@ $directions=[];
     <script>
         var map;
         var markersArray = [];
+        var polyLinesArray=[]
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
@@ -151,12 +152,11 @@ $directions=[];
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
-
+            polyLinesArray.push(flightPath)
             flightPath.setMap(map);
         }
 
-        function addMarker(lat,long) {
-
+        function addMarker(lat,long) {5
              marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat,long),
                 map: map
@@ -171,8 +171,8 @@ $directions=[];
             let value=document.getElementById("default-range").value;
             addMarker(directions[value-1][0],directions[value-1][1])
         }
-        function changePolyline(){
-            google.maps.Polyline.setMap(null)
+        function changePolyLine(){
+            polyLinesArray[0].setMap(null)
         }
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
