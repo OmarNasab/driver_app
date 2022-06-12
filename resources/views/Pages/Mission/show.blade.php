@@ -183,7 +183,9 @@ $directions=[];
             addMarker(directions[value-1][0],directions[value-1][1])
         }
         function changePolyLine(index){
-            polyLinesArray[0].setMap(null)
+            for(let i=0;i<polyLinesArray.length;++){
+                polyLinesArray[i].setMap(null)
+            }
             polyLinesArray[index].setMap(map)
         }
     </script>
