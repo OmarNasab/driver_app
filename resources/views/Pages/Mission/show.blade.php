@@ -179,6 +179,7 @@ $directions=[];
             for(let i=0;i<polyLinesArray.length;i++){
                 polyLinesArray[i].setMap(null)
             }
+            document.getElementById("default-range").value=0;
             document.getElementById("default-range").setAttribute("max",paths[index].length)
             polyLinesArray[index].setMap(map)
         }
