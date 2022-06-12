@@ -1008,6 +1008,9 @@ input:checked + .toggle-bg {
 .row-span-3 {
   grid-row: span 3 / span 3;
 }
+.row-span-5 {
+  grid-row: span 5 / span 5;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
