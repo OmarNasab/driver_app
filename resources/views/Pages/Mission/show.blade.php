@@ -128,6 +128,7 @@ $directions=[];
         var markersArray = [];
         var polyLinesArray=[];
         var paths=[];
+        var index=0;
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
@@ -171,9 +172,8 @@ $directions=[];
         function changeMarker(){
             markersArray[0].setMap(null)
             markersArray.length=0;
-            let directions={{json_encode($directions)}};
             let value=document.getElementById("default-range").value;
-            addMarker(directions[value-1][0],directions[value-1][1])
+            addMarker(paths[index][value-1]["lat"],paths[index][value-1]["lng"])
         }
         function changePolyLine(index){
             for(let i=0;i<polyLinesArray.length;i++){
