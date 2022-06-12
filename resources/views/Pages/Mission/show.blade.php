@@ -173,7 +173,7 @@ $directions=[];
             markersArray[0].setMap(null)
             markersArray.length=0;
             let value=document.getElementById("default-range").value;
-            addMarker(paths[index][value-1]["lat"],paths[index][value-1]["lng"])
+            addMarker(paths[currentIndex][value-1]["lat"],paths[currentIndex][value-1]["lng"])
         }
         function changePolyLine(index){
             for(let i=0;i<polyLinesArray.length;i++){
