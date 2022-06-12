@@ -182,6 +182,7 @@ $directions=[];
             document.getElementById("default-range").value=1;
             document.getElementById("default-range").setAttribute("max",paths[index].length)
             polyLinesArray[index].setMap(map)
+            changeMarker()
         }
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
