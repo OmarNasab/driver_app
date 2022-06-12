@@ -145,15 +145,31 @@ $directions=[];
                 @endforeach
             ];
             addMarker({{$directions[0][0]}},{{$directions[0][1]}})
-            const flightPath = new google.maps.Polyline({
-                path: flightPlanCoordinates,
+
+            @foreach($mission->direction as $stop)
+
+            let flightPath = new google.maps.Polyline({
+                path: {
+                    @foreach($stop["direction"] as $direction)
+                    lat: {{$direction["lat"]}},long: {{$direction["long"]}}
+                    @endforeach
+                },
                 geodesic: true,
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
             polyLinesArray.push(flightPath)
-            flightPath.setMap(map);
+            @endforeach
+
+            // const flightPath = new google.maps.Polyline({
+            //     path: flightPlanCoordinates,
+            //     geodesic: true,
+            //     strokeColor: "#FF0000",
+            //     strokeOpacity: 1.0,
+            //     strokeWeight: 2,
+            // });
+            polyLinesArray[0].setMap(map);
         }
 
         function addMarker(lat,long) {5
@@ -171,8 +187,8 @@ $directions=[];
             let value=document.getElementById("default-range").value;
             addMarker(directions[value-1][0],directions[value-1][1])
         }
-        function changePolyLine(){
-            polyLinesArray[0].setMap(null)
+        function changePolyLine(index){
+            polyLinesArray[index].setMap(map)
         }
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
