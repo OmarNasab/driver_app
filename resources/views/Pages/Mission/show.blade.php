@@ -149,11 +149,14 @@ $directions=[];
             @foreach($mission->direction as $stop)
 
             let flightPath = new google.maps.Polyline({
-                path: {
-                    @foreach($stop["direction"] as $direction)
+                path:[  @foreach($stop["direction"] as $direction)
+                    {
+
                     lat: {{$direction["lat"]}},long: {{$direction["long"]}}
-                    @endforeach
+
                 },
+                @endforeach
+                    ],
                 geodesic: true,
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
