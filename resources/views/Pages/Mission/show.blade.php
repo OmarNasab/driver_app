@@ -152,7 +152,7 @@ $directions=[];
                 path:[  @foreach($stop["direction"] as $direction)
                     {
 
-                    lat: {{$direction["lat"]}},long: {{$direction["long"]}}
+                    lat: {{$direction["lat"]}},lng: {{$direction["long"]}}
 
                 },
                 @endforeach
