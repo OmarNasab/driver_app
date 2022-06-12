@@ -128,7 +128,7 @@ $directions=[];
         var markersArray = [];
         var polyLinesArray=[];
         var paths=[];
-        var index=0;
+        var currentIndex=0;
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
@@ -179,6 +179,7 @@ $directions=[];
             for(let i=0;i<polyLinesArray.length;i++){
                 polyLinesArray[i].setMap(null)
             }
+            currentIndex=index;
             document.getElementById("default-range").value=1;
             document.getElementById("default-range").setAttribute("max",paths[index].length)
             polyLinesArray[index].setMap(map)
