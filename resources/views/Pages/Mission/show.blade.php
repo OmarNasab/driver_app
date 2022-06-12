@@ -145,10 +145,10 @@ $directions=[];
                 @endforeach
             ];
             addMarker({{$directions[0][0]}},{{$directions[0][1]}})
-
+            let flightPath;
             @foreach($mission->direction as $stop)
 
-            let flightPath = new google.maps.Polyline({
+             flightPath = new google.maps.Polyline({
                 path:[  @foreach($stop["direction"] as $direction)
                     {
 
