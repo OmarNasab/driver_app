@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Driver;
 use App\Models\Expense;
 use App\Models\Mission;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 
 class ApiController extends Controller
 {
-    public function SignInRequest(Request $request): \Illuminate\Http\JsonResponse
+    public function SignInRequest(Request $request)
     {
         $data=json_decode($request->getContent());
         $email=$data->email;
@@ -29,7 +30,7 @@ class ApiController extends Controller
         return response()->json();
     }
 
-    public function addExpense(Request $request): Expense
+    public function addExpense(Request $request)
     {
        $driver_id=$request->driver_id;
        $path=$request["attachment"]->store("documents");
@@ -43,7 +44,7 @@ class ApiController extends Controller
        $expense->save();
        return $expense;
     }
-    public function getTotalExpensesForOneDriver(Request $request): \Illuminate\Http\JsonResponse
+    public function getTotalExpensesForOneDriver(Request $request)
     {
         $data=json_decode($request->getContent());
         $totalExpenses=Expense::where("driver_id",$data->driver_id)->where("status",Expense::VALID)->sum("amount");
@@ -78,7 +79,7 @@ class ApiController extends Controller
         Mission::where("id",$id)->update(["direction"=>$Direction,"status"=>1,"completed_date"=>date("Y-m-d H:i:s")]);
         $oldData->driver->update(["status"=>0]);
     }
-    public function totalTrips($id): \Illuminate\Http\JsonResponse
+    public function totalTrips($id): JsonResponse
     {
         return response()->json(["totalTrips"=>count(Mission::where("driver_id",$id)->get())]);
     }
