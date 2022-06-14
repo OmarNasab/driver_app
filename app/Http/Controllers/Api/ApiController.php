@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Hash;
 
 class ApiController extends Controller
 {
-    public function SignInRequest(Request $request){
+    public function SignInRequest(Request $request): \Illuminate\Http\JsonResponse
+    {
         $data=json_decode($request->getContent());
         $email=$data->email;
         $password=$data->password;
@@ -28,7 +29,8 @@ class ApiController extends Controller
         return response()->json();
     }
 
-    public function addExpense(Request $request){
+    public function addExpense(Request $request): Expense
+    {
        $driver_id=$request->driver_id;
        $path=$request["attachment"]->store("documents");
        $expense=new Expense();
@@ -41,7 +43,8 @@ class ApiController extends Controller
        $expense->save();
        return $expense;
     }
-    public function getTotalExpensesForOneDriver(Request $request){
+    public function getTotalExpensesForOneDriver(Request $request): \Illuminate\Http\JsonResponse
+    {
         $data=json_decode($request->getContent());
         $totalExpenses=Expense::where("driver_id",$data->driver_id)->where("status",Expense::VALID)->sum("amount");
         if(!$totalExpenses){
@@ -50,7 +53,8 @@ class ApiController extends Controller
         return response()->json($totalExpenses);
     }
 
-    public function getCurrentMission($id){
+    public function getCurrentMission($id): array
+    {
         $mission=Mission::where("driver_id",$id)->where("status","0")->first();
         if($mission){
             return $mission;
@@ -73,5 +77,9 @@ class ApiController extends Controller
         array_push($Direction,$data);
         Mission::where("id",$id)->update(["direction"=>$Direction,"status"=>1,"completed_date"=>date("Y-m-d H:i:s")]);
         $oldData->driver->update(["status"=>0]);
+    }
+    public function totalTrips($id): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(["totalTrips"=>count(Mission::where("driver_id",$id)->get())]);
     }
 }
