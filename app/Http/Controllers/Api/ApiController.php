@@ -83,4 +83,7 @@ class ApiController extends Controller
     {
         return response()->json(["totalTrips"=>count(Mission::where("driver_id",$id)->get())]);
     }
+    public function getExpensesList($id){
+        return Expense::where("driver_id",$id)->get();
+    }
 }
