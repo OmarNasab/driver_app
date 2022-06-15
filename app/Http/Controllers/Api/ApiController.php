@@ -54,7 +54,7 @@ class ApiController extends Controller
         return response()->json($totalExpenses);
     }
 
-    public function getCurrentMission($id): array
+    public function getCurrentMission($id)
     {
         $mission=Mission::where("driver_id",$id)->where("status","0")->first();
         if($mission){
