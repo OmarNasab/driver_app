@@ -1,3 +1,5 @@
+import Tabs from "flowbite"
+
 const tabElements = [
     {
         id: 'in-progress',
