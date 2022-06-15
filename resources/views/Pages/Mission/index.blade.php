@@ -12,14 +12,14 @@
                 data-tabs-toggle="#myTabContent" role="tablist">
                 <li class="mr-2" role="presentation">
                     <button class="inline-block p-4 rounded-t-lg border-b-2" id="in-progress-tab"
-                            data-tabs-target="#in-progress" type="button" role="tab" aria-controls="in-progress"
+                             type="button" role="tab" aria-controls="in-progress"
                             aria-selected="false">In Progress
                     </button>
                 </li>
                 <li class="mr-2" role="presentation">
                     <button
                         class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                        id="completed-tab" data-tabs-target="#completed" type="button" role="tab"
+                        id="completed-tab" type="button" role="tab"
                         aria-controls="completed" aria-selected="false">Completed
                     </button>
                 </li>
