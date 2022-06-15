@@ -155,6 +155,6 @@
                 console.log('tab is shown');
             }
         };
-        const tabs = new window.Tabs(tabElements, options);
+        const tabs = window.Tabs(tabElements, options);
     </script>
 </x-app-layout>
