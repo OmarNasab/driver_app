@@ -20,5 +20,4 @@ const options = {
         console.log('tab is shown');
     }
 };
-let Tabs=window.Tabs;
 const tabs = new Tabs(tabElements, options);
