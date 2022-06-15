@@ -8,15 +8,15 @@
     </x-slot>
 
     <div class="container mx-auto mt-1 bg-white shadow ">
-        <div class="text-2xl py-4 border-b-2 border-blue-500">
-            <div class="ml-4">
+        <div class="text-2xl py-4 border-b-2 border-picton-blue">
+            <div class="ml-4 text-gray-500">
                 Drivers List
             </div>
         </div>
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Full Name
@@ -39,17 +39,17 @@
                                 class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{$driver->full_name}}
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-gray-900">
                                 {{$driver->email}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-gray-900">
                                 {{$driver->phone}}
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("driver.show",[$driver->id])}}"
-                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">View</a>
                                 <a href="{{route("driver.edit",[$driver->id])}}"
-                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                         </tr>
                     @endforeach

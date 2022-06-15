@@ -3,7 +3,7 @@
 
     </x-slot>
     <div class="container mx-auto mt-1 bg-white shadow rounded p-4">
-        <div class="text-2xl py-4 border-b-2 border-blue-500">
+        <div class="text-2xl py-4 border-b-2 border-picton-blue">
             <div class="ml-4">
                 New Role
             </div>
@@ -18,9 +18,9 @@
                 </div>
                 <div class="grid grid-cols-4">
                 @foreach($permissions->getCurrentPermissions() as $permission)
-                <div class="row-span-1">
-                    <label>
-                        <input class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" type="checkbox" name="permissions[]" value="{{$permission}}">
+                <div class="row-span-1 py-5 px-3">
+                    <label class="px-5">
+                        <input class="w-4 h-4 py-3 px-3 text-picton-blue bg-gray-100 rounded border-picton-blue focus:ring-blue-500 dark:focus:-ring-blue600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" type="checkbox" name="permissions[]" value="{{$permission}}">
                         {{$permissions->getRoleName($permission)}}
                     </label>
                 </div>
