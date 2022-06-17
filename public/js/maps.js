@@ -97,7 +97,7 @@ $("#addPlace").on("submit",function (e){
         $("#address-latitude").val() +
         "</td>" +
         "<td class='px-6 py-4 text-right'>" +
-        "<button onclick='deletePlace(this)' class='font-medium text-blue-600 dark:text-blue-500 hover:underline deletePlace'>Delete</button>"+
+        "<button onclick='deletePlace(this)' class='font-medium text-picton-blue dark:text-blue-500 hover:underline deletePlace'>Delete</button>"+
         "</td>" +
         "</tr>")
     $("#address-input").val("")

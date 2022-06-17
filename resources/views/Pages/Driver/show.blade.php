@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="container mx-auto mt-1 bg-white shadow ">
-        <div class="text-2xl py-4 border-b-2 border-blue-500 border-picton-blue">
+        <div class="text-2xl py-4 border-b-2 border-picton-blue">
             <div class="ml-4 text-gray-500">
                 Driver Details
             </div>
