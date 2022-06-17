@@ -1,2 +1,2 @@
 
-<img src="{{URL::asset("storage")."/images/logo.png"}}" alt="KGC Driver Logo">
+<img src="{{URL::asset("storage")."/logo.png"}}" alt="KGC Driver Logo">
