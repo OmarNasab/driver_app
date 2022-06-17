@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto py-6 sm:px-6">
+    <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div class="flex flex-row w-full">
             @if($expense->status==0)
                 <a type="button"
@@ -15,9 +15,9 @@
             @endif
         </div>
     </div>
-
+    
     <div class="container mx-auto mt-1 bg-white shadow ">
-        <div class="text-2xl py-4 border-b-2 border-picton-blue">
+        <div class="text-2xl py-4 border-b-2 border-blue-500">
             <div class="ml-4">
                 Expense Details
             </div>
@@ -28,7 +28,7 @@
                     <img class="inline" src="{{URL::asset("storage")."/".$expense->attachment}}" width="400" alt="document" >
                 </div>
                 <div class="row-span-1">
-                    <a type="button" href="{{route("downloadImage",[$expense->id])}}" target="_blank" class="text-white w-full text-center bg-picton-blue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><i class="fa-solid fa-cloud-arrow-down"></i> Download</a>
+                    <a type="button" href="{{route("downloadImage",[$expense->id])}}" target="_blank" class="text-white w-full text-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><i class="fa-solid fa-cloud-arrow-down"></i> Download</a>
                 </div>
                 <div class="row-span-1"><span class="font-bold">Driver Name:</span> {{$expense->driver->full_name}}</div>
                 <div class="row-span-1"><span class="font-bold">Amount:</span> AED{{$expense->amount}}</div>
