@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-row w-full">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-row w-full justify-end">
             @if($expense->status==0)
                 <a type="button"
                    href="{{route("expenseVerify",[$expense->id,1])}}"
@@ -15,7 +15,6 @@
             @endif
         </div>
     </div>
-    
     <div class="container mx-auto mt-1 bg-white shadow ">
         <div class="text-2xl py-4 border-b-2 border-blue-500">
             <div class="ml-4">
