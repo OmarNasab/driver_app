@@ -1,10 +1,12 @@
 <x-app-layout>
-    <x-slot name="header">
-
-    </x-slot>
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-row w-full justify-end">
+            <x-link link="role.create">Add Role</x-link>
+        </div>
+    </div>
 
     <div class="container mx-auto mt-1 bg-white shadow ">
-        <div class="text-2xl py-4 border-b-2 border-blue-500">
+        <div class="text-2xl py-4 border-b-2 border-picton-blue">
             <div class="ml-4">
                 Roles List
             </div>
@@ -12,7 +14,7 @@
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Name
