@@ -1,3 +1,14 @@
+<?php
+$directions=[];
+?>
+@foreach($mission->direction as $stop)
+    @foreach($stop["direction"] as $direction)
+        @php(array_push($directions,[$direction["lat"],$direction["long"]]))
+    @endforeach
+@endforeach
+
+
+
 <x-app-layout>
     <x-slot name="header">
 
@@ -8,7 +19,7 @@
                 data-tabs-toggle="#myTabContent" role="tablist">
                 <li class="mr-2" role="presentation">
                     <button class="inline-block p-4 rounded-t-lg border-b-2" id="details-tab"
-                            type="button" role="tab" aria-controls="details"
+                            data-tabs-target="#details" type="button" role="tab" aria-controls="details"
                             aria-selected="false">Details
                     </button>
                 </li>
@@ -16,7 +27,7 @@
                 <li class="mr-2" role="presentation">
                     <button
                         class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                        id="direction-tab" type="button" role="tab"
+                        id="direction-tab" data-tabs-target="#direction" type="button" role="tab"
                         aria-controls="direction" aria-selected="false">Directions
                     </button>
                 </li>
