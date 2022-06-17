@@ -1,5 +1,9 @@
 <x-app-layout>
-    <x-slot name="header"></x-slot>
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-row w-full justify-end">
+
+        </div>
+    </div>
     <div class="container mx-auto mt-1 bg-white shadow ">
         <div class="text-2xl py-4 border-b-2 border-blue-500 border-picton-blue">
             <div class="ml-4 text-gray-500">
@@ -17,9 +21,9 @@
                 <div class="row-span-1"><span class="font-bold text-gray-900">UAE ID:</span> {{$driver->uaeID}}</div>
                 <div class="row-span-1"><span class="font-bold text-gray-900">Status:</span>
                     @if($driver->status==0)
-                        <span class="text-green-600">Free</span> 
+                        <span class="text-green-600">Free</span>
                     @else
-                    <span class="text-red-600">Busy</span> 
+                    <span class="text-red-600">Busy</span>
                     @endif
                 </div>
             </div>
