@@ -1,18 +1,17 @@
 <x-app-layout>
-    <x-slot name="header">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div class="flex flex-row w-full justify-end">
-            <div>
-                <x-link link="mission.index"><i class="fa-solid fa-bars"> </i> Missions List</x-link>
-            </div>
+            <x-link link="mission.index"><i class="fa-solid fa-bars ml-1"> </i> Missions List</x-link>
         </div>
-    </x-slot>
-    <div class="container mx-auto mt-1 bg-white shadow rounded p-4">
-        <div class="text-2xl py-4 border-b-2 border-blue-500">
+    </div>
+    <div class="container mx-auto mt-1 bg-white shadow">
+        <div class="text-2xl py-4 border-b-2 border-picton-blue">
             <div class="ml-4">
                 New Mission
             </div>
         </div>
-        <div class="container mt-4">
+        <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
+            <div class="pb-3 relative overflow-x-auto sm:rounded-lg">
             <x-auth-validation-errors class="mb-4" :errors="$errors"></x-auth-validation-errors>
             <form id="savePlace" method="POST">
                 @csrf
@@ -20,7 +19,7 @@
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="driver_name" class="sr-only">Choose a Driver</label>
                     <select id="driver_name"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                            class="rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required>
                         <option disabled selected>Choose a Driver</option>
                         @foreach($drivers as $driver)
                             <option value="{{$driver->id}}">{{$driver->full_name}}</option>
@@ -28,9 +27,14 @@
 
                     </select>
                 </div>
+
+                <div class="mb-6">
+                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
+                    <x-input type="text" id="description" class="w-full" required></x-input>
+                </div>
                 <div class="grid grid-rows-1 pb-3 grid-cols-2 grid-flow-col" >
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 hidden" id="stops">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 Place
@@ -53,22 +57,22 @@
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
                     <button type="button" data-modal-toggle="defaultModal"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                            class="text-white bg-picton-blue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                         <i class="fa-solid fa-plus"></i>Add Stop
                     </button>
                 </div>
-                <div class="mb-6">
-                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
-                    <input type="text" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+
+                <div class="flex justify-center">
+                    <button type="submit"
+                            class="text-white bg-picton-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Submit
+                    </button>
                 </div>
-                <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Submit
-                </button>
+
             </form>
         </div>
     </div>
-
+    </div>
 
     <!-- Main modal -->
     <div id="defaultModal" tabindex="-1" aria-hidden="true"
@@ -93,9 +97,9 @@
                     <div class="mb-6">
                         <label for="address_address"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stop Address</label>
-                        <input type="text" id="address-input" name="address_address"
-                               class="map-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               placeholder="Address" required>
+                        <x-input type="text" id="address-input" name="address_address"
+                               class="map-input w-full"
+                                 placeholder="Address" required></x-input>
                     </div>
                     <input type="hidden" name="address_latitude" id="address-latitude" value="0"/>
                     <input type="hidden" name="address_longitude" id="address-longitude" value="0"/>
@@ -106,7 +110,7 @@
                     <div
                         class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
                         <button data-modal-toggle="defaultModal" type="submit"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                class="text-white bg-picton-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Add
                         </button>
                         <button data-modal-toggle="defaultModal" type="button"
