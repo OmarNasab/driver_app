@@ -116,6 +116,7 @@ $("#savePlace").on("submit",function (e){
     let user=$("#supervisor").val()
     let token=$("input[name='_token']").val()
     let driver=$("#driver_name").val()
+    let vehicle=$("#vehicle_name").val()
     let description=$("#description").val()
     for(let i=0;i<$(".place").length;i++){
         let place={
@@ -131,17 +132,18 @@ $("#savePlace").on("submit",function (e){
         "_token":token,
         "supervisor":user,
         "driver_id":driver,
+        "vehicle_id":vehicle,
         "description":description,
         "places":json
     }
     $.ajax(
         {
             type:"POST",
-            url:"https://kgc-drivers.com/mission/ajax_store",
+            url:"http://127.0.0.1:8000/mission/ajax_store",
             data:JSON.stringify(formData),
             contentType: "application/json; charset=utf-8",
             success:function (){
-                window.location.href = "https://kgc-drivers.com/mission";
+                window.location.href = "http://127.0.0.1:8000/mission";
             }
         }
     )

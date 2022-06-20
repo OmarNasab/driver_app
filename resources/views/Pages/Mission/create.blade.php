@@ -27,7 +27,17 @@
 
                     </select>
                 </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="vehicle_name" class="sr-only">Choose a Vehicle</label>
+                    <select id="vehicle_name"
+                            class="rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required>
+                        <option disabled selected>Choose a Vehicle</option>
+                        @foreach($vehicles as $vehicle)
+                            <option value="{{$vehicle->id}}">{{$vehicle->model}}</option>
+                        @endforeach
 
+                    </select>
+                </div>
                 <div class="mb-6">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
                     <x-input type="text" id="description" class="w-full" required></x-input>

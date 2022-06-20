@@ -17,6 +17,7 @@ class Mission extends Model
     protected $fillable = [
         "user_id",
         'driver_id',
+        "vehicle_id",
         'description',
         'stops',
         'direction',
@@ -36,6 +37,10 @@ class Mission extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    public function vehicle(): BelongsTo
+    {
+        return $this->belongsTo(Vehicle::class);
     }
 
 

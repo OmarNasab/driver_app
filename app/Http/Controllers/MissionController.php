@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Driver;
 use App\Models\Mission;
+use App\Models\Vehicle;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -31,8 +32,9 @@ class MissionController extends Controller
      */
     public function create()
     {
+        $vehicles=Vehicle::where("status","0")->get();
         $drivers=Driver::where("status","0")->get();
-        return view("Pages.Mission.create",["drivers"=>$drivers]);
+        return view("Pages.Mission.create",["drivers"=>$drivers,"vehicles"=>$vehicles]);
     }
 
     /**
@@ -50,12 +52,14 @@ class MissionController extends Controller
         $data=json_decode($request->getContent());
 
         $driver_id=$data->driver_id;
+        $vehicle_id=$data->vehicle_id;
         $supervisor=$data->supervisor;
         $description=$data->description;
         $places=$data->places;
         $mission=new Mission();
         $mission->user_id=$supervisor;
         $mission->driver_id=$driver_id;
+        $mission->vehicle_id=$vehicle_id;
         $mission->description=$description;
         $mission["stops"]=$places;
         $mission["direction"]=[];
@@ -92,8 +96,6 @@ class MissionController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        // Disabling SSL Certificate support temporarly
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
         // Execute post
         $result = curl_exec($ch);

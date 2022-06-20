@@ -11,22 +11,26 @@
             </div>
         </div>
         <div class="container mt-4 py-8">
-            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col gap-y-8">
-                <div class="row-span-4">
-                    <img class="inline" src="{{URL::asset("storage")."/".$driver->image}}" width="400" alt="document" >
+            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col">
+                <div class="row-span-2">
+                    <img class="inline" src="{{URL::asset("storage")."/".$vehicle->license_front_side}}" width="200" alt="document" >
                 </div>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Traffic Plate Number:</span> {{$vehicle->full_name}}</div>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Type:</span> {{$vehicle->email}}</div>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Model:</span> {{$driver->phone}}</div>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Place of Issue:</span> {{$vehicle->uaeID}}</div>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Registration Date:</span>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Expiration Date:</span>
-                <div class="row-span-1"><span class="font-bold text-gray-900">Insurance Expiration Date:</span>
-
-                    @if($driver->status==0)
-                        <span class="text-green-600">Free</span>
+                <div class="row-span-2">
+                    <img class="inline" src="{{URL::asset("storage")."/".$vehicle->license_back_side}}" width="200" alt="document" >
+                </div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Traffic Plate Number:</span> {{$vehicle->traffic_plate_number}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Type:</span> {{$vehicle->type}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Model:</span> {{$vehicle->model}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Place of Issue:</span> {{$vehicle->place_of_issue}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Registration Date:</span> {{$vehicle->registration_date}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Expiration Date:</span> {{$vehicle->expiration_date}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Insurance Expiration Date:</span> {{$vehicle->insurance_expiration_date}}</div>
+                <div class="row-span-1"><span class="font-bold text-gray-900">Kilometrage:</span> {{$vehicle->kilometrage}}</div>
+                <div class="row-span-1">State
+                    @if($vehicle->status==0)
+                        <span class="text-green-600"> Free</span>
                     @else
-                    <span class="text-red-600">Busy</span>
+                    <span class="text-red-600"> Busy</span>
                     @endif
                 </div>
             </div>
