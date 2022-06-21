@@ -46,7 +46,7 @@ class ApiController extends Controller
        $expense->status=$expense::NOT_VERIFIED;
        if($request->category==="fuel"){
            $expense->liters=$request->liters;
-           $vehicle->update("kilometrage",$request->kilometrage);
+           $vehicle->update(["kilometrage"=>$request->kilometrage]);
        }
        $expense->save();
 
