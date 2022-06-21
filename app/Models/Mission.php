@@ -21,13 +21,15 @@ class Mission extends Model
         'description',
         'stops',
         'direction',
+        "invoices",
         "status",
         "completed_date"
     ];
 
     protected $casts = [
         'stops' => 'array',
-        'direction' => 'array'
+        'direction' => 'array',
+        "invoices"=>"array"
     ];
 
     public function driver(): BelongsTo

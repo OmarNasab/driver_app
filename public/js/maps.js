@@ -1,6 +1,6 @@
 function initialize() {
 
-    $('form').on('keyup keypress', function(e) {
+    $('form').on('keyup keypress', function (e) {
         var keyCode = e.keyCode || e.which;
         if (keyCode === 13) {
             e.preventDefault();
@@ -81,8 +81,7 @@ function setLocationCoordinates(key, lat, lng) {
 }
 
 
-
-$("#addPlace").on("submit",function (e){
+$("#addPlace").on("submit", function (e) {
     e.preventDefault()
     $("#stops").removeClass("hidden")
     $("#places").append("" +
@@ -97,55 +96,151 @@ $("#addPlace").on("submit",function (e){
         $("#address-latitude").val() +
         "</td>" +
         "<td class='px-6 py-4 text-right'>" +
-        "<button onclick='deletePlace(this)' class='font-medium text-picton-blue dark:text-blue-500 hover:underline deletePlace'>Delete</button>"+
+        "<button onclick='deletePlace(this)' class='font-medium text-picton-blue dark:text-blue-500 hover:underline deletePlace'>Delete</button>" +
         "</td>" +
         "</tr>")
     $("#address-input").val("")
 
 })
-function deletePlace(e){
+
+function deletePlace(e) {
     e.parentNode.parentNode.remove()
-    if(!$("#places").children().length){
+    if (!$("#places").children().length) {
         $("#stops").addClass("hidden")
     }
 }
 
-$("#savePlace").on("submit",function (e){
+$("#savePlace").on("submit", function (e) {
     e.preventDefault()
-    let json=[]
-    let user=$("#supervisor").val()
-    let token=$("input[name='_token']").val()
-    let driver=$("#driver_name").val()
-    let vehicle=$("#vehicle_name").val()
-    let description=$("#description").val()
-    for(let i=0;i<$(".place").length;i++){
-        let place={
-            "name":$(".name:eq("+i+")").text(),
-            "lat":$(".lat:eq("+i+")").text(),
-            "long":$(".long:eq("+i+")").text(),
+    let json = []
+    let user = $("#supervisor").val()
+    let token = $("input[name='_token']").val()
+    let driver = $("#driver_name").val()
+    let vehicle = $("#vehicle_name").val()
+    let description = $("#description").val()
+    for (let i = 0; i < $(".place").length; i++) {
+        let place = {
+            "name": $(".name:eq(" + i + ")").text(),
+            "lat": $(".lat:eq(" + i + ")").text(),
+            "long": $(".long:eq(" + i + ")").text(),
         }
-        console.log(place)
         json.push(place)
     }
+    let invoices_id = []
+    let recipient_name = []
+    let invoices = []
 
-    let formData={
-        "_token":token,
-        "supervisor":user,
-        "driver_id":driver,
-        "vehicle_id":vehicle,
-        "description":description,
-        "places":json
+    $("input[name='invoice_id[]']").each(function () {
+        invoices_id.push($(this).val())
+    })
+    $("input[name='recipient_name[]']").each(function () {
+        recipient_name.push($(this).val())
+    })
+    for (let i = 0; i < invoices_id.length; i++) {
+        invoices.push({"invoice_id": invoices_id[i], "recipient_name": recipient_name[i]})
+    }
+
+    console.log()
+    let formData = {
+        "_token": token,
+        "supervisor": user,
+        "driver_id": driver,
+        "vehicle_id": vehicle,
+        "description": description,
+        "places": json,
+        "invoices": invoices
     }
     $.ajax(
         {
-            type:"POST",
-            url:"http://127.0.0.1:8000/mission/ajax_store",
-            data:JSON.stringify(formData),
+            type: "POST",
+            url: "http://127.0.0.1:8000/mission/ajax_store",
+            data: JSON.stringify(formData),
             contentType: "application/json; charset=utf-8",
-            success:function (){
+            success: function () {
                 window.location.href = "http://127.0.0.1:8000/mission";
             }
         }
     )
-
 })
+
+var invoiceNumber = 1;
+
+$("#type").on("change", function (e) {
+    let value = e.target.value;
+    let invoicesElement = $("#invoices")
+    if (value === "delivery") {
+        $("#invoice_id").prop('required', true);
+        $("#recipient_name").prop('required', true);
+        invoicesElement.removeClass("hidden")
+    } else {
+
+        $("#invoice_id").prop('required', false);
+        $("#recipient_name").prop('required', false);
+
+        if (invoicesElement.children().length > 1) {
+            for (let i = 1; i < invoicesElement.children().length;) {
+                invoicesElement.children()[i].remove()
+            }
+            addAddButton()
+        }
+        invoicesElement.addClass("hidden")
+    }
+})
+
+function addInvoice(e) {
+    let invoice_info = `<div class="grid grid-cols-5 gap-2" id="invoice_info_${invoiceNumber}">
+                        <div class="mb-6 col-span-2">
+                            <label for="invoice_id_${invoiceNumber}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Invoice Number</label>
+                            <input type="text" id="invoice_id_${invoiceNumber}" name="invoice_id[]" class="w-full rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required/>
+                        </div>
+                        <div class="mb-6 col-span-2">
+                            <label for="recipient_name_${invoiceNumber}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recipient Name</label>
+                            <input type="text" id="recipient_name_${invoiceNumber}" name="recipient_name[]" class="w-full rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required/>
+                        </div>
+                        <div class="mb-6 col-span-1">
+                            <button  type="button" id="add" onclick="addInvoice(this)"
+                                     class="text-gray-500 mt-7 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                Add
+                            </button>
+                            <button  type="button" id="delete_${invoiceNumber}" onclick="deleteInvoice(this)"
+                                     class="text-white disabled:opacity-25 disabled:hover:bg-red-500 bg-red-500 mt-7 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-red-200 text-sm font-medium px-5 py-2.5 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                Delete
+                            </button>
+                        </div>
+                    </div>`
+    $("#invoices").append(invoice_info)
+    e.remove()
+    invoiceNumber++
+}
+
+function deleteInvoice(e) {
+    let id = e.id
+    id = id.replace("delete_", "")
+    id = parseInt(id)
+
+
+    if (id === invoiceNumber - 1) {
+        for (let i = invoiceNumber - 2; i >= 0; i--) {
+            let checkDelete = document.getElementById(`delete_${i}`)
+            console.log(checkDelete)
+            if (checkDelete) {
+                $(`#delete_${i}`).parent().prepend(button)
+                invoiceNumber = i + 1
+                break;
+            }
+            if (i === 0) {
+                addAddButton()
+            }
+        }
+    }
+    e.parentElement.parentElement.remove()
+}
+
+function addAddButton() {
+    let button = `<button  type="button" id="add" onclick="addInvoice(this)"
+                                     class="text-gray-500 mt-7 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                Add
+                            </button>`
+    $(`#delete`).parent().prepend(button)
+    invoiceNumber = 1
+}

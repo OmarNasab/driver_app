@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("description");
             $table->json("stops");
             $table->json("direction")->nullable();
+            $table->json("invoices")->nullable();
             $table->string("status");
             $table->dateTime("completed_date")->nullable();
             $table->timestamps();

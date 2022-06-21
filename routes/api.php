@@ -24,6 +24,7 @@ Route::post("finishDestination/{id}",[ApiController::class,'finishDestination'])
 Route::post("finishTrip/{id}",[ApiController::class,'finishTrip']);
 Route::get("totalTrips/{id}",[ApiController::class,'totalTrips']);
 Route::get("expensesList/{id}",[ApiController::class,'getExpensesList']);
+Route::get("getVehiclesPlateNumber",[ApiController::class,'getVehiclesPlateNumber']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

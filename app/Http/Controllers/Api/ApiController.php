@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Driver;
 use App\Models\Expense;
 use App\Models\Mission;
+use App\Models\Vehicle;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -85,5 +87,10 @@ class ApiController extends Controller
     }
     public function getExpensesList($id){
         return Expense::where("driver_id",$id)->get();
+    }
+    function getVehiclesPlateNumber(): Collection
+    {
+        return Vehicle::select("traffic_plate_number")->get();
+
     }
 }

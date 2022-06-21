@@ -17,10 +17,42 @@
                 @csrf
                 <input type="hidden" id="supervisor" value="{{Auth::user()->id}}">
                 <div class="relative z-0 w-full mb-6 group">
+                    <label for="type" class="sr-only">Choose a Vehicle</label>
+                    <select id="type"
+                            class="rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" name="type" required>
+                        <option value="" disabled selected>Choose Type</option>
+                        <option value="delivery">Delivery</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="hidden" id="invoices">
+                    <div class="grid grid-cols-5 gap-2" id="invoice_info">
+                        <div class="mb-6 col-span-2">
+                            <label for="invoice_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Invoice Number</label>
+                            <x-input type="text" id="invoice_id" name="invoice_id[]" class="w-full"></x-input>
+                        </div>
+                        <div class="mb-6 col-span-2">
+                            <label for="recipient_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recipient Name</label>
+                            <x-input type="text" id="recipient_name" name="recipient_name[]" class="w-full"></x-input>
+                        </div>
+                        <div class="mb-6 col-span-1">
+                            <button  type="button" id="add" onclick="addInvoice(this)"
+                                     class="text-gray-500 mt-7 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                Add
+                            </button>
+                            <button  type="button" id="delete" disabled
+                                     class="text-white disabled:opacity-25 disabled:hover:bg-red-500 bg-red-500 mt-7 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-red-200 text-sm font-medium px-5 py-2.5 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-0 w-full mb-6 group">
                     <label for="driver_name" class="sr-only">Choose a Driver</label>
                     <select id="driver_name"
-                            class="rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required>
-                        <option disabled selected>Choose a Driver</option>
+                            class="rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required  >
+                        <option value="" disabled selected>Choose a Driver</option>
                         @foreach($drivers as $driver)
                             <option value="{{$driver->id}}">{{$driver->full_name}}</option>
                             @endforeach
@@ -30,8 +62,8 @@
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="vehicle_name" class="sr-only">Choose a Vehicle</label>
                     <select id="vehicle_name"
-                            class="rounded-md shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required>
-                        <option disabled selected>Choose a Vehicle</option>
+                            class="rounded-md  shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required>
+                        <option value="" disabled selected>Choose a Vehicle</option>
                         @foreach($vehicles as $vehicle)
                             <option value="{{$vehicle->id}}">{{$vehicle->model}}</option>
                         @endforeach
