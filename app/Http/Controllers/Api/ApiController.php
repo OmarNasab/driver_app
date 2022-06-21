@@ -37,7 +37,7 @@ class ApiController extends Controller
        $path=$request["attachment"]->store("documents");
        $vehicle=Vehicle::where("traffic_plate_number",$request->traffic_plate_number)->first();
        $expense=new Expense();
-       $expense->vehcile_id=$vehicle->id;
+       $expense->vehicle_id=$vehicle->id;
        $expense->driver_id=$driver_id;
        $expense->amount=$request->amount;
        $expense->category=$request->category;
