@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('driver_id')->constrained();
             $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('vehicle_id')->constrained();
             $table->string("category");
+            $table->string("liters")->nullable();
             $table->string("description");
             $table->double("amount");
             $table->string("attachment");

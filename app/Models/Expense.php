@@ -26,6 +26,7 @@ class Expense extends Model
         'user_id',
         'category',
         'amount',
+        "liters",
         "description",
         "attachment"
     ];

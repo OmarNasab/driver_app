@@ -7,7 +7,6 @@ use App\Models\Driver;
 use App\Models\Expense;
 use App\Models\Mission;
 use App\Models\Vehicle;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,15 +35,21 @@ class ApiController extends Controller
     {
        $driver_id=$request->driver_id;
        $path=$request["attachment"]->store("documents");
+       $vehicle=Vehicle::where("traffic_plate_number",$request->traffic_plate_number)->first();
        $expense=new Expense();
+       $expense->vehcile_id=$vehicle->id;
        $expense->driver_id=$driver_id;
        $expense->amount=$request->amount;
        $expense->category=$request->category;
        $expense->description=$request->description;
        $expense->attachment=$path;
        $expense->status=$expense::NOT_VERIFIED;
+       if($request->category==="fuel"){
+           $expense->liters=$request->liters;
+           $vehicle->update("kilometrage",$request->kilometrage);
+       }
        $expense->save();
-       return $expense;
+
     }
     public function getTotalExpensesForOneDriver(Request $request)
     {
@@ -88,9 +93,8 @@ class ApiController extends Controller
     public function getExpensesList($id){
         return Expense::where("driver_id",$id)->get();
     }
-    function getVehiclesPlateNumber(): Collection
+    public function getVehiclesPlateNumber()
     {
         return Vehicle::select("traffic_plate_number")->get();
-
     }
 }
