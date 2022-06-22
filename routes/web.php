@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MapController;
@@ -25,9 +26,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,"index"])->middleware(['auth'])->name('dashboard');
 
 Route::resource("driver", DriverController::class)->middleware("role:add_driver");
 Route::resource("map", MapController::class)->middleware(['auth']);

@@ -45,8 +45,8 @@
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("driver.show",[$driver->id])}}"
                                    class="font-medium text-picton-blue dark:text-blue-500 hover:underline">View</a>
-                                <a href="{{route("driver.edit",[$driver->id])}}"
-                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
+{{--                                <a href="{{route("driver.edit",[$driver->id])}}"--}}
+{{--                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>--}}
                             </td>
                         </tr>
                     @endforeach

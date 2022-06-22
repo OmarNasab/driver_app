@@ -70,8 +70,8 @@
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("vehicle.show",[$vehicle->id])}}"
                                    class="font-medium text-picton-blue dark:text-blue-500 hover:underline">View</a>
-                                <a href="{{route("vehicle.edit",[$vehicle->id])}}"
-                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
+{{--                                <a href="{{route("vehicle.edit",[$vehicle->id])}}"--}}
+{{--                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>--}}
                             </td>
                         </tr>
                     @endforeach

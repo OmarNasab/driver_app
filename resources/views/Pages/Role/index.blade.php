@@ -32,8 +32,8 @@
                                 {{$role->name}}
                             </th>
                             <td class="px-6 py-4 text-right">
-                                <a href="{{route("role.edit",[$role->id])}}"
-                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
+{{--                                <a href="{{route("role.edit",[$role->id])}}"--}}
+{{--                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>--}}
                             </td>
                         </tr>
                     @endforeach
