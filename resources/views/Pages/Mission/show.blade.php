@@ -3,7 +3,7 @@ $directions = [];
 ?>
 @foreach($mission->direction as $stop)
     @foreach($stop["direction"] as $direction)
-        @php(array_push($directions,[$direction["lat"],$direction["long"]]))
+        @php(array_push($directions,[$direction["lat"],$direction["long"],$direction["time"]]))
     @endforeach
 @endforeach
 
