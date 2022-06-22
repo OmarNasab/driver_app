@@ -153,11 +153,11 @@ $("#savePlace").on("submit", function (e) {
     $.ajax(
         {
             type: "POST",
-            url: "http://127.0.0.1:8000/mission/ajax_store",
+            url: "https://kgc-drivers.com/mission/ajax_store",
             data: JSON.stringify(formData),
             contentType: "application/json; charset=utf-8",
             success: function () {
-                window.location.href = "http://127.0.0.1:8000/mission";
+                window.location.href = "https://kgc-drivers.com/mission";
             }
         }
     )
