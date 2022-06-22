@@ -118,6 +118,7 @@ $("#savePlace").on("submit", function (e) {
     let driver = $("#driver_name").val()
     let vehicle = $("#vehicle_name").val()
     let description = $("#description").val()
+    let type = $("#type").val()
     for (let i = 0; i < $(".place").length; i++) {
         let place = {
             "name": $(".name:eq(" + i + ")").text(),
@@ -148,6 +149,7 @@ $("#savePlace").on("submit", function (e) {
         "vehicle_id": vehicle,
         "description": description,
         "places": json,
+        "type":type,
         "invoices": invoices
     }
     $.ajax(

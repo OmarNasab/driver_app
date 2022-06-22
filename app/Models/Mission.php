@@ -19,6 +19,7 @@ class Mission extends Model
         'driver_id',
         "vehicle_id",
         'description',
+        "type",
         'stops',
         'direction',
         "invoices",

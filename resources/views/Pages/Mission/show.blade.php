@@ -78,37 +78,39 @@ $directions = [];
                                 <div class=" w-full font-bold">Assigned Date:</div> {{$mission->created_at}}
                             </div>
                             @if($mission->status==1)
-                            <div class="row-span-1">
-                                <div class=" w-full font-bold">Completed Date:</div> {{$mission->completed_date}}
-                            </div>
-                                @endif
+                                <div class="row-span-1">
+                                    <div class=" w-full font-bold">Completed Date:</div> {{$mission->completed_date}}
+                                </div>
+                            @endif
                         </div>
-                        <table class="w-1/2 mt-4 text-sm text-center text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Invoice ID
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Recipient Name
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody >
-                            @foreach($mission->invoices as $invoice)
-                                <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-                                    <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                        {{$invoice["invoice_id"]}}
+                        @if($mission->type==="delivery")
+                            <table class="w-1/2 mt-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Invoice ID
                                     </th>
-                                    <td class="px-6 py-4">
-                                        {{$invoice["recipient_name"]}}
-                                    </td>
+                                    <th scope="col" class="px-6 py-3">
+                                        Recipient Name
+                                    </th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($mission->invoices as $invoice)
+                                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                            {{$invoice["invoice_id"]}}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{$invoice["recipient_name"]}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                     @if(count($mission->direction)!=0)
                         <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="direction" role="tabpanel"
@@ -237,7 +239,7 @@ $directions = [];
                 triggerEl: document.getElementById('details-tab'),
                 targetEl: document.getElementById('details')
             },
-            @if(count($mission->direction)!=0)
+                @if(count($mission->direction)!=0)
             {
                 id: 'direction',
                 triggerEl: document.getElementById('direction-tab'),

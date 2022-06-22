@@ -62,6 +62,7 @@ class MissionController extends Controller
         $mission->vehicle_id=$vehicle_id;
         $mission->description=$description;
         $mission->invoices=$data->invoices;
+        $mission->type=$data->type;
         $mission["stops"]=$places;
         $mission["direction"]=[];
         $mission->status=0;
