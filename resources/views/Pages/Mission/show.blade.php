@@ -118,7 +118,7 @@ $directions = [];
                             <div id="map" style="height: 500px">
                             </div>
                             <label for="default-range"
-                                   class="block text-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Time: </label>
+                                   class="block text-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Time: <span id="time"></span> </label>
                             <input id="default-range" type="range" value="1" min="1"
                                    max="{{count($mission->direction[0]["direction"])}}" onchange="changeMarker()"
                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
@@ -164,7 +164,7 @@ $directions = [];
             var polyLinesArray = [];
             var paths = [];
             var currentIndex = 0;
-
+            var timestampsArray =[];
             function initMap() {
                 map = new google.maps.Map(document.getElementById("map"), {
                     zoom: 15,
@@ -191,6 +191,11 @@ $directions = [];
                     strokeOpacity: 1.0,
                     strokeWeight: 2,
                 });
+                var timestamps=[]
+                @foreach($stop["direction"] as $direction)
+                    timestamps.push({{$direction["time"]}})
+                    @endforeach
+                        timestampsArray.push(timestamps)
                 paths.push(path)
                 polyLinesArray.push(flightPath)
                 @endforeach
@@ -198,7 +203,6 @@ $directions = [];
             }
 
             function addMarker(lat, long) {
-                5
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(lat, long),
                     map: map
@@ -210,6 +214,7 @@ $directions = [];
                 markersArray[0].setMap(null)
                 markersArray.length = 0;
                 let value = document.getElementById("default-range").value;
+                document.getElementById("time").innerText=getDateTime(timestampsArray[currentIndex][value - 1])
                 addMarker(paths[currentIndex][value - 1]["lat"], paths[currentIndex][value - 1]["lng"])
             }
 
@@ -222,6 +227,16 @@ $directions = [];
                 document.getElementById("default-range").setAttribute("max", paths[index].length)
                 polyLinesArray[index].setMap(map)
                 changeMarker()
+            }
+            function getDateTime(timestamp){
+                let date=new Date(timestamp)
+                date=date.getDate()+
+                    "/"+(date.getMonth()+1)+
+                    "/"+date.getFullYear()+
+                    " "+date.getHours()+
+                    ":"+date.getMinutes()+
+                    ":"+date.getSeconds()
+                return date;
             }
         </script>
 
