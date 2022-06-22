@@ -83,6 +83,32 @@ $directions = [];
                             </div>
                                 @endif
                         </div>
+                        <table class="w-1/2 mt-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Invoice ID
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Recipient Name
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            @foreach($mission->invoices as $invoice)
+                                <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                        {{$invoice["invoice_id"]}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{$invoice["recipient_name"]}}
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     @if(count($mission->direction)!=0)
                         <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="direction" role="tabpanel"
@@ -103,9 +129,6 @@ $directions = [];
                                         Destination
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Supervisor
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
                                         <span class="sr-only">View</span>
                                     </th>
                                 </tr>
@@ -117,8 +140,6 @@ $directions = [];
                                             class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                             {{$stop["name"]}}
                                         </th>
-                                        <td class="px-6 py-4">
-                                        </td>
                                         <td class="px-6 py-4 text-right">
                                             <button onclick="changePolyLine({{$index}})"
                                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">

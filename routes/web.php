@@ -21,23 +21,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect("login");
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource("driver", DriverController::class)->middleware("role:add_driver");
-Route::resource("map", MapController::class);
-Route::resource("expense", ExpenseController::class);
-Route::resource("mission", MissionController::class);
-Route::resource("role", RoleController::class);
-Route::resource("user", UserController::class);
-Route::resource("vehicle", VehicleController::class);
-Route::get("expense/{id}/download",[ExpenseController::class,"downloadImage"])->name("downloadImage");
-Route::get("expense/{id}/verify/{status}",[ExpenseController::class,"verify"])->name("expenseVerify");
-Route::post("mission/ajax_store",[MissionController::class,"ajax_store"]);
+Route::resource("map", MapController::class)->middleware(['auth']);
+Route::resource("expense", ExpenseController::class)->middleware(['auth']);
+Route::resource("mission", MissionController::class)->middleware(['auth']);
+Route::resource("role", RoleController::class)->middleware(['auth']);
+Route::resource("user", UserController::class)->middleware(['auth']);
+Route::resource("vehicle", VehicleController::class)->middleware(['auth']);
+Route::get("expense/{id}/download",[ExpenseController::class,"downloadImage"])->name("downloadImage")->middleware(['auth']);
+Route::get("expense/{id}/verify/{status}",[ExpenseController::class,"verify"])->name("expenseVerify")->middleware(['auth']);
+Route::post("mission/ajax_store",[MissionController::class,"ajax_store"])->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

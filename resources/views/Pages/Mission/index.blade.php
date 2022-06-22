@@ -47,6 +47,9 @@
                                     Driver Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Invoices
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Date
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -67,7 +70,11 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$mission->driver->full_name}}
-
+                                    </td>
+                                    <td class="px-6 py-4">
+                                      @foreach($mission->invoices as $invoice)
+                                        <div>{{$invoice["invoice_id"]}}</div>
+                                        @endforeach
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$mission->created_at}}
