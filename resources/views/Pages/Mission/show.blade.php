@@ -175,6 +175,7 @@ $directions = [];
                     }
                 });
                 addMarker({{$directions[0][0]}}, {{$directions[0][1]}})
+                document.getElementById("time").innerText=getDateTime({{$directions[0][2]}})
                 let flightPath;
                 @foreach($mission->direction as $stop)
                 var path = [@foreach($stop["direction"] as $direction)
