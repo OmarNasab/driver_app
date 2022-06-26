@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="container mt-4 py-8">
-            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col">
+            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col gap-4">
                 <div class="row-span-2">
                     <img class="inline" src="{{URL::asset("storage")."/".$vehicle->license_front_side}}" width="200" alt="document" >
                 </div>
