@@ -50,8 +50,8 @@
                                        class="font-medium text-picton-blue dark:text-blue-500 hover:underline">View</a>
                                     <a href="{{route("driver.edit",[$driver->id])}}"
                                        class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
-                                    <button type="submit"
-                                       class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Delete</button>
+{{--                                    <button type="submit"--}}
+{{--                                       class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Delete</button>--}}
                                 </form>
 
                             </td>

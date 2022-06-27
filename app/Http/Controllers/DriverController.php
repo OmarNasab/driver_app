@@ -116,7 +116,7 @@ class DriverController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        Driver::destroy($id);
+//        Driver::destroy($id);
         return back();
     }
 
