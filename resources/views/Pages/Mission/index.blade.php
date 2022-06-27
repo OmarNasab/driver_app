@@ -125,11 +125,9 @@
                                     </th>
                                     <td class="px-6 py-4">
                                         {{$mission->user->name}}
-
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$mission->driver->full_name}}
-
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$mission->completed_date}}
@@ -149,7 +147,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script>
         const tabElements = [
