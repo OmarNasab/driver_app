@@ -23,6 +23,13 @@
                         aria-controls="missions" aria-selected="false">Missions
                     </button>
                 </li>
+                <li class="mr-2" role="presentation">
+                    <button
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="change-password-tab" type="button" role="tab"
+                        aria-controls="change-password" aria-selected="false">Change Password
+                    </button>
+                </li>
             </ul>
         </div>
         <div class="container mx-auto mt-1 bg-white shadow ">
@@ -114,6 +121,37 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="change-password" role="tabpanel"
+                     aria-labelledby="change-password-tab">
+
+                    <div class="pb-3 relative overflow-x-auto sm:rounded-lg">
+                        <x-auth-validation-errors class="mb-4" :errors="$errors"></x-auth-validation-errors>
+                        <form action="{{Route("driver.changePassword",[$driver->id])}}" method="POST">
+                            @csrf
+                            @method("PUT")
+                            <div class="py-3">
+                                <x-label for="password" class="text-base" :value="__('Password')"></x-label>
+
+                                <x-input id="password" class="block mt-1 w-full text-base" type="password"
+                                         name="password"
+                                         required
+                                         autofocus></x-input>
+                            </div>
+                            <div class="py-3">
+                                <x-label for="confirm_password" class="text-base"
+                                         :value="__('Confirm Password')"></x-label>
+
+                                <x-input id="confirm_password" class="block mt-1 w-full text-base" type="password"
+                                         name="password_confirmation" required autofocus></x-input>
+                            </div>
+                            <div class="flex justify-center">
+                                <x-button class="my-3 px-5">
+                                    {{ __('Save') }}
+                                </x-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -128,6 +166,11 @@
                 id: 'missions',
                 triggerEl: document.getElementById('missions-tab'),
                 targetEl: document.getElementById('missions')
+            },
+            {
+                id: 'change-password',
+                triggerEl: document.getElementById('change-password-tab'),
+                targetEl: document.getElementById('change-password')
             }
         ];
 

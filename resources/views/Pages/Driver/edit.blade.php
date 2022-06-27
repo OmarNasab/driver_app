@@ -13,7 +13,7 @@
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
             <div class="pb-3 relative overflow-x-auto sm:rounded-lg">
                 <x-auth-validation-errors class="mb-4" :errors="$errors"></x-auth-validation-errors>
-                <form action="{{Route("driver.update",["$driver->id"])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{Route("driver.update",["$driver->id"])}}" method="POST">
                     @csrf
                     @method("PUT")
                     <div class="py-3">

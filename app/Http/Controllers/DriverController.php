@@ -118,4 +118,12 @@ class DriverController extends Controller
     {
         //
     }
+
+    public function changePassword(Request $request,$id){
+        $request->validate([
+            "password"=>["required","confirmed",Rules\Password::defaults()],
+        ]);
+        Driver::where("id",$id)->update(["password"=>Hash::make($request->password)]);
+        return back();
+    }
 }
