@@ -68,11 +68,13 @@ class RoleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function edit(int $id)
+    public function edit(int $id): View|Factory|Application
     {
-        //
+        $permissions=new Role();
+        $role=Role::where("id",$id)->first();
+        return view("Pages.Role.edit",["permissions"=>$permissions,"role"=>$role]);
     }
 
     /**

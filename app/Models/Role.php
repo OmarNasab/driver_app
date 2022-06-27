@@ -80,5 +80,16 @@ class Role extends Model
     {
         return self::capabilities;
     }
+    public function getRoleCapabilities(): array
+    {
+        $data=$this->permissions;
+        $newData=[];
+        foreach ($data as $index => $row){
+            foreach ($row as $element){
+                array_push($newData,$element."_".$index);
+            }
+        }
+        return $newData;
+    }
 
 }
