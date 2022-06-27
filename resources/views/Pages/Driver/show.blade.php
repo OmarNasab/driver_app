@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="container mt-4 py-8">
-            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col gap-y-8">
+            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col gap-x-8 gap-y-8">
                 <div class="row-span-4">
                     <img class="inline" src="{{URL::asset("storage")."/".$driver->image}}" width="400" alt="document" >
                 </div>
