@@ -44,7 +44,7 @@
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{route("user.show",[$user->id])}}"
-                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
 {{--                                <a href="{{route("user.edit",[$user->id])}}"--}}
 {{--                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>--}}
                             </td>

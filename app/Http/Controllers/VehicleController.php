@@ -6,6 +6,7 @@ use App\Models\Vehicle;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -76,24 +77,36 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return Application|Factory|View
      */
-    public function edit($id)
+    public function edit(int $id): View|Factory|Application
     {
-        //
+        $vehicle=Vehicle::where("id",$id)->first();
+        return view("Pages.Vehicle.edit",["vehicle"=>$vehicle]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $data=[
+            "traffic_plate_number"=>$request->traffic_plate_number,
+            "type"=>$request->type,
+            "model"=>$request->model,
+            "place_of_issue"=>$request->place_of_issue,
+            "registration_date"=>$request->registration_date,
+            "expiration_date"=>$request->expiration_date,
+            "insurance_expiration_date"=>$request->insurance_expiration_date
+        ];
+
+        Vehicle::where("id",$id)->update($data);
+        return back();
     }
 
     /**
