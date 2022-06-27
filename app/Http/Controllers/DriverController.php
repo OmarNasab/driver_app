@@ -80,24 +80,32 @@ class DriverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return Application|Factory|View
      */
-    public function edit($id)
+    public function edit(int $id): View|Factory|Application
     {
-        //
+        $driver=Driver::where("id",$id)->first();
+        return view("Pages.Driver.edit",["driver"=>$driver]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
-        //
+        $data=[
+            "full_name"=>$request->full_name,
+            "email"=>$request->email,
+            "phone"=>$request->phone,
+            "uaeID"=>$request->uaeID,
+        ];
+        Driver::where("id",$id)->update($data);
+        return redirect("driver/".$id);
     }
 
     /**
