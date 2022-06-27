@@ -111,12 +111,13 @@ class DriverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        Driver::destroy($id);
+        return back();
     }
 
     public function changePassword(Request $request,$id){
@@ -124,6 +125,14 @@ class DriverController extends Controller
             "password"=>["required","confirmed",Rules\Password::defaults()],
         ]);
         Driver::where("id",$id)->update(["password"=>Hash::make($request->password)]);
+        return back();
+    }
+    public function changeImage(Request $request,$id){
+        $request->validate([
+            "image"=>["image"],
+        ]);
+        $path=$request["image"]->store("images");
+        Driver::where("id",$id)->update(["image"=>$path]);
         return back();
     }
 }

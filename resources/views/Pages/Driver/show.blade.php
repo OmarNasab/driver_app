@@ -43,10 +43,18 @@
                     <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="details" role="tabpanel"
                          aria-labelledby="details-tab">
                         <div class="container mt-4 py-8">
-                            <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col gap-x-8 gap-y-8">
+                            <div class="ml-4 grid grid-rows-5 grid-cols-4 grid-flow-col gap-x-8 gap-y-8">
                                 <div class="row-span-4">
                                     <img class="inline" src="{{URL::asset("storage")."/".$driver->image}}" width="400"
                                          alt="document">
+                                </div>
+                                <div class="row-span-1">
+                                    <form id="changeImage" enctype="multipart/form-data" class="hidden" action="{{route("driver.changeImage",[$driver->id])}}" method="POST">
+                                        @csrf
+                                        @method("PUT")
+                                        <input id="image" type="file" name="image">
+                                    </form>
+                                    <button onclick="changePhoto()" class="text-white w-full text-center bg-picton-blue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><i class="fa-solid fa-image"></i> Change Photo</button>
                                 </div>
                                 <div class="row-span-1"><span
                                         class="font-bold text-gray-900">Driver Name:</span> {{$driver->full_name}}</div>
@@ -156,6 +164,14 @@
         </div>
     </div>
     <script>
+
+        function changePhoto(){
+            $("#image").click()
+        }
+        $("#image").on("change",function (){
+            $("#changeImage").submit()
+        })
+
         const tabElements = [
             {
                 id: 'details',

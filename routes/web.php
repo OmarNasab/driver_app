@@ -39,6 +39,6 @@ Route::get("expense/{id}/download",[ExpenseController::class,"downloadImage"])->
 Route::get("expense/{id}/verify/{status}",[ExpenseController::class,"verify"])->name("expenseVerify")->middleware(['auth']);
 Route::post("mission/ajax_store",[MissionController::class,"ajax_store"])->middleware(['auth']);
 Route::put("driver/{id}/changePassword",[DriverController::class,"changePassword"])->name("driver.changePassword");
-
+Route::put("driver/{id}/changeImage",[DriverController::class,"changeImage"])->name("driver.changeImage");
 
 require __DIR__.'/auth.php';

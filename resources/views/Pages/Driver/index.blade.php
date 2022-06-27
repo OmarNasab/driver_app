@@ -43,10 +43,17 @@
                                 {{$driver->phone}}
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <a href="{{route("driver.show",[$driver->id])}}"
-                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">View</a>
-                                <a href="{{route("driver.edit",[$driver->id])}}"
-                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
+                                <form action="{{route("driver.destroy",[$driver->id])}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <a href="{{route("driver.show",[$driver->id])}}"
+                                       class="font-medium text-picton-blue dark:text-blue-500 hover:underline">View</a>
+                                    <a href="{{route("driver.edit",[$driver->id])}}"
+                                       class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
+                                    <button type="submit"
+                                       class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Delete</button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach
