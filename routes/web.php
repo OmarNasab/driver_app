@@ -43,5 +43,4 @@ Route::put("driver/{id}/changeImage",[DriverController::class,"changeImage"])->n
 
 
 
-URL::forceScheme("https");
 require __DIR__.'/auth.php';
