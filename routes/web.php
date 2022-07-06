@@ -41,4 +41,7 @@ Route::post("mission/ajax_store",[MissionController::class,"ajax_store"])->middl
 Route::put("driver/{id}/changePassword",[DriverController::class,"changePassword"])->name("driver.changePassword");
 Route::put("driver/{id}/changeImage",[DriverController::class,"changeImage"])->name("driver.changeImage");
 
+
+
+URL::forceScheme("https");
 require __DIR__.'/auth.php';
