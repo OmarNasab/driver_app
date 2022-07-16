@@ -164,10 +164,10 @@
             </div>
         </div>
     </div>
-    <script async src="{{asset("js/maps.js")}}"></script>
+    <script src="{{asset("js/maps.js")}}"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAMFxLg6Qi_iib6bKjJIxyEmOPvUr7m_Y&callback=&libraries=places&callback=initialize"
-        async defer
+        defer
     ></script>
 
 
