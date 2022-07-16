@@ -86,7 +86,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Role::query()->where("id",$id)->update(["permissions"=> (new Role)->setPermissions($request->permissions)]);
+        return redirect()->back();
     }
 
     /**

@@ -18,13 +18,15 @@ class RoleSeeder extends Seeder
         $permissions=["user"=>[
             "add",
             "edit",
-            "delete",
-            "show"
         ],
             "driver"=>[
                 "add",
                 "edit",
-                "delete",
+                "show"
+            ],
+            "vehicle"=>[
+                "add",
+                "edit",
                 "show"
             ],
             "expense"=>[
@@ -38,8 +40,7 @@ class RoleSeeder extends Seeder
             "role"=>[
                 "add",
                 "edit",
-                "delete",
-                "show"
+
             ]];
         $role=new Role();
         $role->name="admin";
