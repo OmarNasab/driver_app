@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 class UserController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('role:add_user', ['only' => ['create', 'store']]);
+        $this->middleware('role:edit_user', ['only' => ['edit', 'update','changePassword','changeImage']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

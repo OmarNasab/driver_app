@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class MissionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:add_mission', ['only' => ['create', 'ajax_store']]);
+        $this->middleware('role:show_mission', ['only' => ['show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

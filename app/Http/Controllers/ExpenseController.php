@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:show_expense', ['only' => ['show']]);
+        $this->middleware('role:verify_expense', ['only' => ['verify']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,6 @@ class ExpenseController extends Controller
      */
     public function index(): Factory|View|Application
     {
-
         $in_progress=Expense::where("status",Expense::NOT_VERIFIED)->get();
         $valid=Expense::where("status",Expense::VALID)->get();
         $invalid=Expense::where("status",Expense::INVALID)->get();

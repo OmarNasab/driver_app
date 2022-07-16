@@ -8,12 +8,20 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class DriverController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('role:add_driver', ['only' => ['create', 'store']]);
+        $this->middleware('role:show_driver', ['only' => ['show']]);
+        $this->middleware('role:edit_driver', ['only' => ['edit', 'update','changePassword','changeImage']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

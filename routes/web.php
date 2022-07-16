@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class,"index"])->middleware(['auth'])->name('dashboard');
 
-Route::resource("driver", DriverController::class)->middleware("role:add_driver");
+Route::resource("driver", DriverController::class)->middleware(['auth']);
 Route::resource("map", MapController::class)->middleware(['auth']);
 Route::resource("expense", ExpenseController::class)->middleware(['auth']);
 Route::resource("mission", MissionController::class)->middleware(['auth']);

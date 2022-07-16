@@ -21,7 +21,7 @@ class CheckRole
     {
         $user= Auth::user();
         if(!$user->hasRole($role)){
-            return redirect("/dashboard");
+           abort(403);
         }
         return $next($request);
     }

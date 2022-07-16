@@ -13,6 +13,13 @@ use Illuminate\Routing\Redirector;
 
 class RoleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:add_role', ['only' => ['create', 'store']]);
+        $this->middleware('role:edit_role', ['only' => ['edit', 'update']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +27,7 @@ class RoleController extends Controller
      */
     public function index(): View|Factory|Application
     {
+
         $roles=Role::all();
         return view("Pages.Role.index",["roles"=>$roles]);
     }
@@ -82,7 +90,7 @@ class RoleController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {

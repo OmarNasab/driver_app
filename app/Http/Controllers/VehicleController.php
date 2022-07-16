@@ -13,6 +13,14 @@ use Illuminate\Http\Response;
 
 class VehicleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:add_vehicle', ['only' => ['create', 'store']]);
+        $this->middleware('role:show_vehicle', ['only' => ['show']]);
+        $this->middleware('role:edit_vehicle', ['only' => ['edit', 'update']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
