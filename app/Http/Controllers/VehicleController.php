@@ -127,4 +127,21 @@ class VehicleController extends Controller
     {
 
     }
+
+    public function changeFrontPhoto(Request $request ,$id){
+        $request->validate([
+            "image"=>["image"],
+        ]);
+        $path=$request["image"]->store("images");
+        Vehicle::where("id",$id)->update(["license_front_side"=>$path]);
+        return back();
+    }
+    public function changeBackPhoto(Request $request ,$id){
+    $request->validate([
+        "image"=>["image"],
+    ]);
+    $path=$request["image"]->store("images");
+    Vehicle::where("id",$id)->update(["license_back_side"=>$path]);
+    return back();
+}
 }

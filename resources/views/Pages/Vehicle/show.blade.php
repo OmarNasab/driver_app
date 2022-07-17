@@ -12,11 +12,23 @@
         </div>
         <div class="container mt-4 py-8">
             <div class="ml-4 grid grid-rows-4 grid-cols-4 grid-flow-col gap-4">
-                <div class="row-span-2">
-                    <img class="inline" src="{{URL::asset("storage")."/".$vehicle->license_front_side}}" width="200" alt="document" >
+                <div class="row-span-2 flex justify-end">
+                    <form id="changeFrontPhoto" enctype="multipart/form-data" class="hidden" action="{{route("vehicle.changeFrontPhoto",[$vehicle->id])}}" method="POST">
+                        @csrf
+                        @method("PUT")
+                        <input id="frontPhoto" type="file" name="image">
+                    </form>
+                    <button onclick="changeFrontPhoto()" class="appearance-none absolute"><i class="fa-solid fa-pen "></i></button>
+                    <img class="inline w-full" src="{{URL::asset("storage")."/".$vehicle->license_front_side}}" width="200" alt="document" >
                 </div>
-                <div class="row-span-2">
-                    <img class="inline" src="{{URL::asset("storage")."/".$vehicle->license_back_side}}" width="200" alt="document" >
+                <div class="row-span-2 flex justify-end">
+                    <form id="changeBackPhoto" enctype="multipart/form-data" class="hidden" action="{{route("vehicle.changeBackPhoto",[$vehicle->id])}}" method="POST">
+                        @csrf
+                        @method("PUT")
+                        <input id="backPhoto" type="file" name="image">
+                    </form>
+                    <button onclick="changeBackPhoto()" class="appearance-none absolute"><i class="fa-solid fa-pen "></i></button>
+                    <img class="inline w-full" src="{{URL::asset("storage")."/".$vehicle->license_back_side}}" width="200" alt="document" >
                 </div>
                 <div class="row-span-1"><span class="font-bold text-gray-900">Traffic Plate Number:</span> {{$vehicle->traffic_plate_number}}</div>
                 <div class="row-span-1"><span class="font-bold text-gray-900">Vehicle Type:</span> {{$vehicle->type}}</div>
@@ -36,4 +48,19 @@
             </div>
         </div>
     </div>
+    <script>
+        function changeFrontPhoto(){
+            $("#frontPhoto").click()
+        }
+        $("#frontPhoto").on("change",function (){
+            $("#changeFrontPhoto").submit()
+        })
+        function changeBackPhoto(){
+            $("#backPhoto").click()
+        }
+        $("#backPhoto").on("change",function (){
+            $("#changeBackPhoto").submit()
+        })
+
+    </script>
 </x-app-layout>

@@ -40,6 +40,9 @@ Route::get("expense/{id}/verify/{status}",[ExpenseController::class,"verify"])->
 Route::post("mission/ajax_store",[MissionController::class,"ajax_store"])->middleware(['auth']);
 Route::put("driver/{id}/changePassword",[DriverController::class,"changePassword"])->name("driver.changePassword");
 Route::put("driver/{id}/changeImage",[DriverController::class,"changeImage"])->name("driver.changeImage");
+Route::put("vehicle/{id}/changeFrontPhoto",[VehicleController::class,"changeFrontPhoto"])->name("vehicle.changeFrontPhoto");
+Route::put("vehicle/{id}/changeBackPhoto",[VehicleController::class,"changeBackPhoto"])->name("vehicle.changeBackPhoto");
+
 
 
 
