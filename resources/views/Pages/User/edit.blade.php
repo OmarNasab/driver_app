@@ -7,7 +7,7 @@
     <div class="container mx-auto mt-1 bg-white shadow">
         <div class="text-2xl py-4 border-b-2 border-picton-blue">
             <div class="ml-4">
-                New User
+                Edit User
             </div>
         </div>
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">

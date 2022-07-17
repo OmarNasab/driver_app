@@ -126,4 +126,15 @@ class UserController extends Controller
     {
         //
     }
+    public function changePassword(Request $request,$id){
+        $request->validate([
+            "password"=>["required","confirmed",Rules\Password::defaults()],
+        ]);
+        User::where("id",$id)->update(["password"=>Hash::make($request->password)]);
+        return $this->index();
+    }
+    public function editPassword($id){
+        $user=User::query()->where("id",$id)->first();
+        return \view("Pages.User.edit-password",["user"=>$user]);
+    }
 }

@@ -42,6 +42,8 @@ Route::put("driver/{id}/changePassword",[DriverController::class,"changePassword
 Route::put("driver/{id}/changeImage",[DriverController::class,"changeImage"])->name("driver.changeImage");
 Route::put("vehicle/{id}/changeFrontPhoto",[VehicleController::class,"changeFrontPhoto"])->name("vehicle.changeFrontPhoto");
 Route::put("vehicle/{id}/changeBackPhoto",[VehicleController::class,"changeBackPhoto"])->name("vehicle.changeBackPhoto");
+Route::put("user/{id}/changePassword",[UserController::class,"changePassword"])->name("user.changePassword");
+Route::get("user/{id}/editPassword",[UserController::class,"editPassword"])->name("user.editPassword");
 
 
 

@@ -46,7 +46,9 @@
 {{--                                <a href="{{route("user.show",[$user->id])}}"--}}
 {{--                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>--}}
                                 <a href="{{route("user.edit",[$user->id])}}"
-                                   class="font-medium text-picton-blue dark:text-blue-500 hover:underline">Edit</a>
+                                   class="font-medium text-picton-blue m-1 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="{{route("user.editPassword",[$user->id])}}"
+                                   class="font-medium text-picton-blue m-1 dark:text-blue-500 hover:underline">Edit Password</a>
                             </td>
                         </tr>
                     @endforeach
