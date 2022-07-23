@@ -65,7 +65,7 @@
                             class="rounded-md  shadow-sm border-gray-300 focus:border-picton-blue focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full peer" required>
                         <option value="" disabled selected>Choose a Vehicle</option>
                         @foreach($vehicles as $vehicle)
-                            <option value="{{$vehicle->id}}">{{$vehicle->model}}</option>
+                            <option value="{{$vehicle->id}}">{{$vehicle->traffic_plate_number}}</option>
                         @endforeach
 
                     </select>
