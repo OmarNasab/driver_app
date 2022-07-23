@@ -166,7 +166,7 @@
     </div>
     <script src="{{asset("js/maps.js")}}"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAMFxLg6Qi_iib6bKjJIxyEmOPvUr7m_Y&callback=&libraries=places&callback=initialize"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrn2KV5jhZDzPthR4HSyqpXu2CPdcZNyk&callback=&libraries=places&callback=initialize"
         defer
     ></script>
 

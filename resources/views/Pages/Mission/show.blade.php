@@ -263,7 +263,7 @@ $directions = [];
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAMFxLg6Qi_iib6bKjJIxyEmOPvUr7m_Y&callback=initMap&v=weekly"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrn2KV5jhZDzPthR4HSyqpXu2CPdcZNyk&callback=initMap&v=weekly"
             async
         ></script>
     @endif
